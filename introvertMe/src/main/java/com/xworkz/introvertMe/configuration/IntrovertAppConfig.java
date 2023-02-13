@@ -14,13 +14,14 @@ public class IntrovertAppConfig {
 		System.out.println("Created " + this.getClass().getSimpleName());
 	}
 	@Bean
-	public ViewResolver resolver() {
-		System.out.println("Running the resolver...");
-		return new InternalResourceViewResolver("/","/jsp");
+	public ViewResolver viewResolver() {
+		System.out.println("Registering the ViewResolver");
+		return new InternalResourceViewResolver("/", ".jsp");
 	}
+
 	@Bean
-	public LocalContainerEntityManagerFactoryBean bean() {
-		System.out.println("Running the LocalContainerEntityManagerFactoryBean");
+	public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
+		System.out.println("Running localContainerEntityManagerFactoryBean");
 		return new LocalContainerEntityManagerFactoryBean();
 	}
 }

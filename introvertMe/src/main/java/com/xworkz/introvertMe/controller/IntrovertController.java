@@ -32,6 +32,5 @@ public class IntrovertController {
 			System.out.println("Validation is Succefullt done and displaying the IntrovertDTO info:-"+introvert);
 		}
 		return "Introvert";
-		
 	}
 }

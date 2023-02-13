@@ -5,7 +5,7 @@
     <!-- Learn More: https://formbold.com -->
   
     <div class="formbold-form-wrapper">
-      
+      <div action="https://formbold.com/s/FORM_ID" >
         <H1 style="text-align: center; color: blueviolet;"><b>Registration Form</b></H1>
         <div class="formbold-mb-5">
           <label for="name" class="formbold-form-label"> Full Name </label>
@@ -104,8 +104,8 @@
               <div class="formbold-mb-5">
                 <input
                   type="text"
-                  name="post-code"
-                  id="post-code"
+                  name="postcode"
+                  id="postcode"
                   placeholder="Post Code"
                   class="formbold-form-input"
                 />
@@ -117,10 +117,8 @@
         <div>
           <button class="formbold-btn">Submit Details</button>
         </div>
-      </form>
-    </div>
-  </div>
-  
+    </div> </div> </div>
+  </form>
   <style>
     * {
       margin: 0;
@@ -221,3 +219,4 @@
       }
     }
   </style>
+  
