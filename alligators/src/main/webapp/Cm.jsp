@@ -58,65 +58,59 @@
 				width="400px" height="400px">
 				
 				
-			<form action="hotel" method="post">
+			<form action="cm" method="post">
 
 				<div class="formbold-input-flex">
 					
 
 					<div>
-						<label for="hotelName" class="formbold-form-label"><b>HotelName</b>
-						</label> <input type="text" name="hotelName" id="hotelName"
-							placeholder="HotelName" class="formbold-form-input" />
+						<label for="name" class="formbold-form-label"><b>CM Name</b>
+						</label> <input type="text" name="name" id="name"
+							placeholder="Chief MinisterName" class="formbold-form-input" />
 					</div>
 				</div>
 
 				<div class="formbold-input-flex">
 					<div>
-						<label for="dishName" class="formbold-form-label">
-							<b>DishName</b> </label> 
-							<input type="text" name="dishName" placeholder="DishName" class="formbold-form-input" />
+						<label for="Party" class="formbold-form-label">
+							<b>Party Name</b> </label> 
+							<input type="text" name="party" placeholder="Party Name" class="formbold-form-input" />
 					</div>
 
 					<div>
-						<label class="formbold-form-label"><b>Quantity</b></label> 
-						<select class="formbold-form-input" name="quantity" id="Quantity">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="2">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
+						<label class="formbold-form-label"><b>State Name</b></label> 
+						<select class="formbold-form-input" name="state" id="Quantity">
+							<option value="KA">KA</option>
+							<option value="TA">TA</option>
+							<option value="AP">AP</option>
+							<option value="TP">TP</option>
+							<option value="UP">UP</option>
+							<option value="MP">MP</option>
+							<option value="MH">MH</option>
+							<option value="Kerala">Kerala</option>
+							<option value="Goa">Goa</option>
+							<option value="Delhi">Delhi</option>
 						</select>
 					</div>
 				</div>
 				<div class="formbold-mb-3 formbold-input-wrapp">
-					<label for="phone" class="formbold-form-label"> <b>Price</b> </label>
+					<label for="phone" class="formbold-form-label"> <b>Tenure</b> </label>
 
 					<div>
-						<input type="text" name="price" id="price" placeholder="price" class="formbold-form-input formbold-w-45" />
+						<input type="text" name="tenure" id="tenure" placeholder="Tenure" class="formbold-form-input formbold-w-45" />
 					</div>
 				</div>
 				<div class="formbold-mb-3 formbold-input-wrapp">
-					<label for="away" class="formbold-form-label"> <b>TakeAway:-</b></label>
-					<label for="away" class="formbold-form-label"> Yes </label>
-					<input value="true" type="radio" name="takeAway" /> 
-					<label for="away" class="formbold-form-label"> NO </label>
-					<input value="false" type="radio" name="takeAway" />
+					<label for="away" class="formbold-form-label"> <b>Gender:-</b></label>
+					<label for="away" class="formbold-form-label"> Male </label>
+					<input value="true" type="radio" name="gender" /> 
+					<label for="away" class="formbold-form-label"> Female </label>
+					<input value="false" type="radio" name="gender" />
 				</div>
 				<div class="formbold-mb-3 formbold-input-wrapp">
-					<label for="away" class="formbold-form-label"> <b>Egg Type:-</b>
-					</label> <select class="formbold-form-input" name="type"id="type">
-						<option value="Standard White Eggs">Standard White Eggs</option>
-						<option value="Standard Brown Eggs">Standard Brown Eggs</option>
-						<option value="Furnished / Enriched / Nest-LaidEggs">Furnished / Enriched / Nest-LaidEggs</option>
-						<option value="Free-Run Eggs">Free-Run Eggs</option>
-						<option value="Free-Range Eggs">Free-Range Eggs</option>
-						<option value="Organic Eggs">Organic Eggs</option>
-						<option value="Omega Eggs">Omega Eggs</option>
-						<option value="Vitamin-Enhanced Eggs">Vitamin-Enhanced Eggs</option>
-						<option value="Processed Eggs">Processed Eggs</option>
-
-					</select>
+					<label for="away" class="formbold-form-label"> <b>PortFolio:-</b>
+					</label> <input type="textArea" class="formbold-form-input" name="portFolio"id="PortFolio">
+						
 
 				</div>
 				<input class="formbold-btn" type="submit" value="applay"  />
