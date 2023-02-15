@@ -25,5 +25,4 @@ public class IntrovertServiceImpl implements IntrovertService {
 			return Collections.emptySet();
 		}
 	}
-
 }

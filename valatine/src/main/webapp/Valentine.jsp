@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ArunVeerapur </title>
+<title>Arun</title>
 </head>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -44,12 +46,41 @@
 				<li class="nav-item"><a class="nav-link disabled" href="#"
 					tabindex="-1" aria-disabled="true">Disabled</a></li>
 			</ul>
-			<a href="introvert.jsp">INTROVERT_ME</a>
-			
+			<a href="valatine">Valatine</a>
+
 		</div>
 	</div>
 </nav>
 <body>
-<h1 color="Blue"><B>WELCOME TO INTROVERT_ME.COM </B></h1>
+	<h1>
+		<b>Welcome to Valentin Data Saving...</b>
+	</h1>
+<c:forEach items="${error}" var="e">
+<span style="color: red;">${e.message}</span><br>
+</c:forEach>	
+	
+<form action="valentin" method="post">
+<pre>
+Name:-<input type="text" name="name" value="${ValentinDTO.name}">
+ValetinName:-<input type="text" name="valentinName" value="${ValentinDTO.valentinName}">
+Places<select name="place">
+<option value="">SELECT</option>
+<c:forEach items="${places}" var="p">
+<option value="${p}">${p}</option>
+</c:forEach>
+</select>
+Gifts<select name="gift">
+<option value="">SELECT</option>
+<c:forEach items="${gifts}" var="g">
+<option value="${g}">${g}</option>
+</c:forEach>
+</select>
+<input type="submit" value="Save">
+</pre>
+</form>
+
+
+
 </body>
 </html>
+

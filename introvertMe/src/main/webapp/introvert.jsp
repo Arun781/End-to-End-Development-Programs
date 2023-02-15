@@ -1,8 +1,7 @@
 
 <form action="introvertWorld" method="post">
 <div class="formbold-main-wrapper">
-    <!-- Author: FormBold Team -->
-    <!-- Learn More: https://formbold.com -->
+   
   
     <div class="formbold-form-wrapper">
       <div action="https://formbold.com/s/FORM_ID" >
@@ -115,7 +114,7 @@
         </div>
   
         <div>
-          <button class="formbold-btn">Submit Details</button>
+          <input class="formbold-btn" type="submit" value="Submit"  />
         </div>
     </div> </div> </div>
   </form>

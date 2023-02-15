@@ -34,6 +34,6 @@ public class IntrovertDTO {
 	@Size(min = 3, max = 25, message = "State Should be more than 3 and less than 25..")
 	private String state;
 	@Min(value = 100000, message = "PostCode Should be more 100000..")
-	private String postcode;
+	private String postcodepostcodepostcode;
 
 }

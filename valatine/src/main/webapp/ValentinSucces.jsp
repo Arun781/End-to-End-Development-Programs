@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ArunVeerapur </title>
+<title>Arun</title>
 </head>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -44,12 +46,16 @@
 				<li class="nav-item"><a class="nav-link disabled" href="#"
 					tabindex="-1" aria-disabled="true">Disabled</a></li>
 			</ul>
-			<a href="introvert.jsp">INTROVERT_ME</a>
-			
+			<a href="index.jsp">HOME</a>
+
 		</div>
 	</div>
 </nav>
 <body>
-<h1 color="Blue"><B>WELCOME TO INTROVERT_ME.COM </B></h1>
+	<h1>
+		<b>Valentin is Succesfully done..</b>
+	</h1>
+
 </body>
 </html>
+
