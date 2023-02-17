@@ -53,9 +53,9 @@
 </nav>
 <body>
 	<h1>
-		<b style="align-content: center;">Valentin is Succesfully done..</b>
+		<b style="align-content: center;">Big-Basket is done Succesfully.....</b>
 	</h1>
-
+<h6>${BigBasketDTO}</h6>
 </body>
 </html>
 

@@ -62,13 +62,20 @@
 <form action="valentin" method="post">
 <pre>
 Name:-<input type="text" name="name" value="${ValentinDTO.name}">
-ValetinName:-<input type="text" name="valentinName" value="${ValentinDTO.valentinName}">
+ValetinName:-<input type="text" name="valentinName" value="${ValentinDTO.valentinName}" >
+
+
 Places<select name="place">
 <option value="">SELECT</option>
 <c:forEach items="${places}" var="p">
 <option value="${p}">${p}</option>
 </c:forEach>
 </select>
+
+
+
+
+
 Gifts<select name="gift">
 <option value="">SELECT</option>
 <c:forEach items="${gifts}" var="g">

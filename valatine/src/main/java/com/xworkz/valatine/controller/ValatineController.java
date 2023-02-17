@@ -21,9 +21,9 @@ public class ValatineController {
 	@Autowired
 	private ValentinService valentinService;
 	
-	private List<String> places = Arrays.asList("JP Nagar", "Srirampur", "Hospet", "Vijayanagar", "Rajajinagar",
+	private List<String> places = Arrays.asList("JP Nagar", "Srirampur", "Hospet", "Vijayanagar", "Rajajinagar","Iskan Temple",
 			"MK Road", "Lalbag", "Ooti");
-	private List<String> gifts = Arrays.asList("Phone", "Watch", "Earbuds", "TeddyBear", "Car", "Bike", "Dresses",
+	private List<String> gifts = Arrays.asList("Phone", "Watch", "Earbuds", "TeddyBear", "Car", "Bike", "Dresses","Holi Book",
 			"Ring", "Chains", "Shoes");
 
 	public ValatineController() {
