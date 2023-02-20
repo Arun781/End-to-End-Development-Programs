@@ -84,15 +84,14 @@ crossorigin="anonymous"></script>
                     </label> <input type="text" name="productCompanyName"  value="${bigBasketDTO.productCompanyName}" id="companyName"
                         placeholder="companyName" class="formbold-form-input" />
                 </div>
-            </div>
-          
-            <div class="formbold-input-flex">
                 <div>
                     <label for="EnterYourNumber" class="formbold-form-label"><b>EnterYourNumber</b>
                     </label> <input type="text" name="enterYourNumber" value="${bigBasketDTO.enterYourNumber}" id="EnterYourNumber"
                         placeholder="EnterYourNumber" class="formbold-form-input" />
                 </div>
             </div>
+          
+           
             <div class="formbold-input-flex">
                 <div>
                     <label for="ProductName" class="formbold-form-label"> <b>ProductName</b>
@@ -147,7 +146,7 @@ crossorigin="anonymous"></script>
 
 
             </div>
-            <input class="formbold-btn" type="submit" value="Apply" />
+            <input class="formbold-btn" type="submit" value="applay" />
         </form>
     </div>
 </div>
