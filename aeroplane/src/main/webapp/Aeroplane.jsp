@@ -6,7 +6,7 @@ pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>BigBasket</title>
+<title>AeroplaneRegister</title>
 </head>
 <link
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -47,12 +47,12 @@ crossorigin="anonymous"></script>
             <li class="nav-item"><a class="nav-link disabled" href="#"
                 tabindex="-1" aria-disabled="true">Disabled</a></li>
         </ul>
-<a href="bigBasket">Bigbasket</a>
+<button class="btn btn-outline-success my-2 my-sm-0"><a href="AeroplaneSearch.jsp">Search</a></button>
     </div>
 </div>
 </nav>
 <body>
-
+<form action="aeroplane" method="post">
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
         <img
@@ -61,8 +61,11 @@ crossorigin="anonymous"></script>
             
 
 <h1>
-    <b>Welcome to Big-Basket Data Saving...</b>
+    <b style="color: Purple" >Welcome to Air-lines Data Saving...</b>
 </h1>
+<br>
+<br>
+
 <c:forEach items="${error}" var="e">
 <span style="color: red;">${e.message}</span><br>
 </c:forEach>	
@@ -71,91 +74,69 @@ crossorigin="anonymous"></script>
 
             <div class="formbold-input-flex">
                 <div>
-                    <label for="enterYourName" class="formbold-form-label"><b>Enter
-                            Your Name</b> </label>
-                             <input type="text" name="enterYourName"
-                        id="enterYourName" placeholder="EnterYourName"
-                        class="formbold-form-input"  value="${bigBasketDTO.enterYourName}"/>
+                    <label for="companyName" class="formbold-form-label"><b>CompanyName</b> </label>
+                             <input type="text" name="companyName"
+                        id="companyName" placeholder="companyName"
+                        class="formbold-form-input"  value="${aeroplaneDTO.companyName}"/>
+                </div>
+                <div>
+                    <label for="AeroplaneName" class="formbold-form-label"><b>AeroplaneName</b>
+                    </label> <input type="text" name="aeroplaneName"  value="${aeroplaneDTO.aeroplaneName}" id="AeroplaneName"
+                        placeholder="AeroplaneName" class="formbold-form-input" />
                 </div>
             </div>
             <div class="formbold-input-flex">
+                
                 <div>
-                    <label for="companyName" class="formbold-form-label"><b>productCompanyName</b>
-                    </label> <input type="text" name="productCompanyName"  value="${bigBasketDTO.productCompanyName}" id="companyName"
-                        placeholder="companyName" class="formbold-form-input" />
-                </div>
-                <div>
-                    <label for="EnterYourNumber" class="formbold-form-label"><b>EnterYourNumber</b>
-                    </label> <input type="text" name="enterYourNumber" value="${bigBasketDTO.enterYourNumber}" id="EnterYourNumber"
-                        placeholder="EnterYourNumber" class="formbold-form-input" />
-                </div>
-            </div>
-          
-           
-            <div class="formbold-input-flex">
-                <div>
-                    <label for="ProductName" class="formbold-form-label"> <b>ProductName</b>
+                    <label for="PassangerName" class="formbold-form-label"> <b>PassangerName</b>
                     </label> 
-                    <input type="text" name="productName"  value="${bigBasketDTO.productName}" placeholder="ProductName"
+                    <input type="text" name="passangerName"  value="${aeroplaneDTO.passangerName}" placeholder="PassangerName"
                         class="formbold-form-input" />
                         
                      <label for="Enter Your Gamil-Id"
-                        class="formbold-form-label"> <b>Enter Your Gamil-Id</b>
-                    </label> <input type="email" name="gmail"  value="${bigBasketDTO.gmail}"
+                        class="formbold-form-label"> <b>Gamil-Id</b>
+                    </label> <input type="email" name="gmail"  value="${aeroplaneDTO.gmail}"
                         placeholder="Enter Your Gamil-Id" class="formbold-form-input" />
                 </div>
 
                 <div>
-                    <label class="formbold-form-label"><b>Location</b></label> 
-                    <select
-                        class="formbold-form-input" name="location" id="Location">
-                        <option value="">Location</option>
-                        <c:forEach items="${locations}" var="l">
-                            <option value="${l}">${l}</option>
+                    <label class="formbold-form-label"><b>Class Type</b></label> <select
+                        class="formbold-form-input" name="classType" id="classType">
+                        <option value="">classType</option>
+                        <c:forEach items="${classType}" var="c">
+                            <option value="${c}">${c}</option>
                         </c:forEach>
-                    </select> <label class="formbold-form-label"><b>AddItems</b></label> <select
-                        class="formbold-form-input" name="addItems" id="Location">
-                        <option value="">AddItems</option>
-                        <c:forEach items="${addItems}" var="AI">
-                            <option value="${AI}">${AI}</option>
+                    </select> <label class="formbold-form-label"><b>CountryName</b></label> <select
+                        class="formbold-form-input" name="countryName" id="Country">
+                        <option value="">countryNames</option>
+                        <c:forEach items="${countryNames}" var="C">
+                            <option value="${C}">${C}</option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
-            <div class="formbold-mb-3 formbold-input-wrapp">
-                <label for="phone" class="formbold-form-label"> <b>Product
-                        Price</b>
-                </label>
-
-                <div>
-                    <input type="text" name="price" value="${bigBasketDTO.price}" id="price"
-                        placeholder="Product Price"
-                        class="formbold-form-input formbold-w-45" />
-                </div>
-            </div>
+           
             <div class="formbold-input-flex">
                 <div>
-                    <label for="password" class="formbold-form-label"><b>Password</b>
-                    </label> <input type="password" name="password"  value="${bigBasketDTO.password}" id="password"
-                        placeholder="Password" class="formbold-form-input" />
+                    <label for="TicketCost" class="formbold-form-label"><b>TicketCost</b>
+                    </label> <input type="text" name="ticketCost"  value="${bigBasketDTO.price}" id="TicketCost"
+                        placeholder="TicketCost" class="formbold-form-input" />
+                </div>
+                <div>
+                    <label for="EnterPlanenumber" class="formbold-form-label"><b>EnterPlanenumber</b>
+                    </label> <input type="text" name="enterPlanenumber" value="${bigBasketDTO.EnterPlanenumber}" id="EnterPlanenumber"
+                        placeholder="EnterPlanenumber" class="formbold-form-input" />
                 </div>
             </div>
-            <div class="formbold-mb-3 formbold-input-wrapp">
-                <label for="away" class="formbold-form-label"> <b>Feedback:-</b>
-                </label> <input type="textArea" class="formbold-form-input" name="feedback" value="${bigBasketDTO.feedback}"
-                    id="PortFolio">
-
-
-            </div>
-            <input class="formbold-btn" type="submit" value="applay" />
+            
+            <input class="formbold-btn" type="submit" value="Apply" />
         </form>
     </div>
 </div>
+</form>
 <style>
 @import
-url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap')
-;
-
+url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 * {
 margin: 0;
 padding: 0;
