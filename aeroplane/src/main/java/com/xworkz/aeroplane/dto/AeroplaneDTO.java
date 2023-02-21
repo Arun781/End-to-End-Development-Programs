@@ -1,6 +1,5 @@
 package com.xworkz.aeroplane.dto;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,26 +11,26 @@ public class AeroplaneDTO {
 	
 	@NotNull
 	private int id;
-	@NotNull
-	@Size(min=3, max=45, message = "The companyName Should be moreden 3 and less den 45")
+	@NotNull(message = "The companyName cannot be null and blank")
+	@Size(min=3,max=20, message = "The companyName should be more den 3 and less 20")
 	private String companyName;
-	@NotNull
-	@Size(min=3, max=45, message = "The aeroplaneName Should be moreden 3 and less den 45")
+	@NotNull(message = "The Name aeroplaneName be null and blank")
+	@Size(min=3,max=20, message = "The aeroplaneName should be more den 3 and less 20")
 	private String aeroplaneName;
-	@NotNull
-	@Size(min=3, max=45, message = "The passangerName Should be moreden 3 and less den 45")
+	@NotNull(message = "The Name passangerName be null and blank")
+	@Size(min=3,max=20, message = "The passangerName should be more den 3 and less 20")
 	private String passangerName;
-	@NotNull
-	@Size(min=3, max=45, message = "The gmail Should be moreden 3 and less den 45")
+	@NotNull(message = "The gmail cannot be null and blank")
+	@Size(min=3,max=50, message = "The gmail should be more den 3 and less 20")
 	private String gmail;
-	@NotNull
-	@Size(min=3, max=45, message = "The classType Should be moreden 3 and less den 45")
+	@NotNull(message = "The classType cannot be null and blank")
+	@Size(min=3,max=20, message = "The classType should be more den 3 and less 20")
 	private String classType;
-	@NotNull
-	@Size(min=3, max=45, message = "The countryName Should be moreden 3 and less den 45")
+	@NotNull(message = "The countryName cannot be null and blank")
+	@Size(min=3,max=20, message = "The countryName should be more den 3 and less 20")
 	private String countryName;
-	@NotBlank(message = "Ticket cost should be noy blank")
+	@NotNull(message = "Ticket cost should be not blank")
 	private Double ticketCost;
-	@NotBlank(message = "EnterPlanenumber cost should be noy blank")
+	@NotNull(message = "EnterPlanenumber cost should be not blank")
 	private Double enterPlanenumber;
 }

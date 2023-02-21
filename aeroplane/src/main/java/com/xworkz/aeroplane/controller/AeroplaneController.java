@@ -25,7 +25,7 @@ public class AeroplaneController {
 	private AeroplaneService aeroplaneService;
 
 	private List<String> classType = Arrays.asList("Business", "Cargo", "Glider", "Aircraft", "Boeing");
-	private List<String> countryNames = Arrays.asList("India", "UK", "US", "CANADA", "DUBHAI");
+	private List<String> countryNames = Arrays.asList("India", "UK", "US", "CANADA", "DUBHAI","Russia","Germany");
 
 	public AeroplaneController() {
 		System.out.println("Created " + this.getClass().getSimpleName());
@@ -39,12 +39,13 @@ public class AeroplaneController {
 		return "Aeroplane";
 	}
 	
-	@GetMapping("/search")
+	@GetMapping("/se")
 	public String onSearch( @RequestParam int id, Model model) {
 		System.out.println("Running the onSearch..."+id);
 		AeroplaneDTO aeroplaneDTO = this.aeroplaneService.findby(id);
 		if(aeroplaneDTO!=null) {
 			model.addAttribute("aeroplaneDTO",aeroplaneDTO);
+			System.out.println(aeroplaneDTO);
 		}else {
 			model.addAttribute("message","data not found");
 		}return "AeroplaneSearch";

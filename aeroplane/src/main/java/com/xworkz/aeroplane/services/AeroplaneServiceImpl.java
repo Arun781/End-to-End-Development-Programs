@@ -52,8 +52,8 @@ public class AeroplaneServiceImpl implements AeroplaneService {
 
 	@Override
 	public AeroplaneDTO findby(int id) {
-		AeroplaneEntity entity = new AeroplaneEntity();
 		if (id > 0) {
+			AeroplaneEntity entity = aeroplaneRepository.findBy(id);
 			System.out.println("Entity is found in service for id" + id);
 			AeroplaneDTO dto = new AeroplaneDTO();
 			dto.setId(entity.getId());
@@ -65,7 +65,7 @@ public class AeroplaneServiceImpl implements AeroplaneService {
 			dto.setCountryName(entity.getCountryName());
 			dto.setTicketCost(entity.getTicketCost());
 			dto.setEnterPlanenumber(entity.getEnterPlanenumber());
-			
+
 			return dto;
 		}
 		return AeroplaneService.super.findby(id);

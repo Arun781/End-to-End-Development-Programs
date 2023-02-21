@@ -45,7 +45,6 @@ public class BigBasketController {
 		model.addAttribute("locations", locations);
 		model.addAttribute("addItems", addItems);
 		if (constraintViolations.isEmpty()) {
-			
 			System.out.println("No constraintViolations in controller go to success page.."+bigBasketDTO);
 			model.addAttribute("BigBasketDTO",bigBasketDTO);
 			return "BigBasketSuccessPage";
