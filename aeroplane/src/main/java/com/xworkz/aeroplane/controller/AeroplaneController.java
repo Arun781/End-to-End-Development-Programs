@@ -45,7 +45,6 @@ public class AeroplaneController {
 		AeroplaneDTO aeroplaneDTO = this.aeroplaneService.findby(id);
 		if(aeroplaneDTO!=null) {
 			model.addAttribute("aeroplaneDTO",aeroplaneDTO);
-			System.out.println(aeroplaneDTO);
 		}else {
 			model.addAttribute("message","data not found");
 		}return "AeroplaneSearch";

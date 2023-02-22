@@ -50,7 +50,7 @@
 			<li class="nav-item"><a class="nav-link disabled" href="#"
 				style="color: Blue">Disabled</a></li>
 		</ul>
-		<form class="form-inline my-2 my-lg-0" action="se" method="get">
+		<form class="form-inline my-2 my-lg-0" action="me" method="get">
 			<input class="form-control mr-sm-2" type="text" placeholder="Search"
 				aria-label="Search" name="id"> <input type="submit"
 				class="
@@ -61,16 +61,14 @@
 </nav>
 <body>
 
-	<h1 style="text-align: center; color: blue">
-		<b>Welcome to search page.....</b>
-	</h1>
-	<h4><b>CompanyName:-</b></h4> <h4 style="color: red">${aeroplaneDTO.companyName}</h4><br>
-	<h4><b>AeroplaneName:- </b></h4><h4 style="color: red">${aeroplaneDTO.aeroplaneName}</h4><br>
-	<h4><b>PassangerName:- </b></h4><h4 style="color: red">${aeroplaneDTO.passangerName}</h4><br>
-	<h4><b>G-mail:- </b></h4><h4 style="color: blue">${aeroplaneDTO.gmail}</h4><br>
-	<h4><b>ClassType:- </b></h4><h4 style="color: red">${aeroplaneDTO.classType}</h4><br>
-	<h4><b>CountryName:- </b></h4><h4 style="color: red">${aeroplaneDTO.countryName}</h4><br>
-	<h4><b>TicketCost:- </b></h4><h4 style="color: red">${aeroplaneDTO.ticketCost}</h4><br>
-	<h4><b>EnterPlanenumber:-</b></h4><h4 style="color: red">${aeroplaneDTO.enterPlanenumber}</h4><br>
+	<h1 style="text-align: center; color: blue"><b>Welcome to search page.....</b></h1>
+	
+	<h4><b>Name:-</b></h4> <h4 style="color: red">${dto.name}</h4><br>
+	<h4><b>BikeNumber:- </b></h4><h4 style="color: red">${dto.bikeNumber}</h4><br>
+	<h4><b>OTP:- </b></h4><h4 style="color: red">${dto.getOTP()}</h4><br>
+	<h4><b>PickUp:-</b></h4><h4 style="color: red">${dto.pickUp}</h4><br>
+	<h4><b>Destination:- </b></h4><h4 style="color: red">${dto.destination}</h4><br>
+	<h4><b>PriceForRide:- </b></h4><h4 style="color: red">${dto.priceForRide}</h4><br>
+
 </body>
 </html>

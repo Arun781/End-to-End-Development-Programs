@@ -34,7 +34,7 @@ public class AeroplaneServiceImpl implements AeroplaneService {
 			System.err.println("violations in dto" + aeroplaneDTO);
 			return violations;
 		}
-		System.out.println("violations not fount");
+		System.out.println("violations not found");
 		AeroplaneEntity aeroplaneEntity = new AeroplaneEntity();
 		aeroplaneEntity.setId(aeroplaneDTO.getId());
 		aeroplaneEntity.setCompanyName(aeroplaneDTO.getCompanyName());

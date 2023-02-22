@@ -13,7 +13,7 @@ import com.xworkz.aeroplane.entity.AeroplaneEntity;
 public class AeroplaneRepositoryImpl implements AeroplaneRepository {
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
-
+                                                                        
 	@Override
 	public boolean save(AeroplaneEntity aeroplaneEntity) {
 		System.out.println("Running the save in repo impl...");
@@ -32,7 +32,6 @@ public class AeroplaneRepositoryImpl implements AeroplaneRepository {
 		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
 		AeroplaneEntity entity = entityManager.find(AeroplaneEntity.class, id);
 		entityManager.close();
-		
 		return entity;
 	}
 }

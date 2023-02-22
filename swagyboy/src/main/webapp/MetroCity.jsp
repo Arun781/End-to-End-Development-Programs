@@ -6,7 +6,7 @@ pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>AeroplaneRegister</title>
+<title>MetroCity</title>
 </head>
 <link
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -47,92 +47,68 @@ crossorigin="anonymous"></script>
             <li class="nav-item"><a class="nav-link disabled" href="#"
                 tabindex="-1" aria-disabled="true">Disabled</a></li>
         </ul>
-<button class="btn btn-outline-success my-2 my-sm-0"><a href="AeroplaneSearch.jsp">Search</a></button>
+<button class="btn btn-outline-success my-2 my-sm-0"><a href="MetroSearch.jsp">Search</a></button>
     </div>
 </div>
 </nav>
 <body>
-<form action="aeroplane" method="post">
+<form action="swag" method="post">
 <div class="formbold-main-wrapper">
-    <div class="formbold-form-wrapper">
-        <img
-            src="https://x-workz.in/static/media/coding_img.bef297f81da57125500a.png"
-            width="400px" height="400px">
-            
+<div class="formbold-form-wrapper">
 
-<h1>
-    <b style="color: Purple" >Welcome to Air-lines Data Saving...</b>
-</h1>
+
+<img src="https://x-workz.in/static/media/coding_img.bef297f81da57125500a.png" width="400px" height="400px">
+<h1><b style="color: Purple" >Welcome to Metro-City Data Saving...</b></h1>
 <br>
 <br>
-
 <c:forEach items="${error}" var="e">
 <span style="color: red;">${e.message}</span><br>
 </c:forEach>	
-
-       
-
             <div class="formbold-input-flex">
                 <div>
-                    <label for="companyName" class="formbold-form-label"><b>CompanyName</b> </label>
-                             <input type="text" name="companyName"
-                        id="companyName" placeholder="companyName"
-                        class="formbold-form-input"  value="${aeroplaneDTO.companyName}"/>
+                    <label for="Name" class="formbold-form-label"><b>Name</b> </label>
+                             <input type="text" name="name"
+                        id="Name" placeholder="Name"
+                        class="formbold-form-input"  value="${uberDTO.name}"/>
                 </div>
                 <div>
-                    <label for="AeroplaneName" class="formbold-form-label"><b>AeroplaneName</b>
-                    </label> <input type="text" name="aeroplaneName"  value="${aeroplaneDTO.aeroplaneName}" id="AeroplaneName"
-                        placeholder="AeroplaneName" class="formbold-form-input" />
+                    <label for="bikeNumber" class="formbold-form-label"><b>BikeNumber</b>
+                    </label> <input type="text" name="bikeNumber"  value="${uberDTO.bikeNumber}" id="bikeNumber"
+                        placeholder="bikeNumber" class="formbold-form-input" />
                 </div>
+            </div>
+            <div>
+             <label class="formbold-form-label"><b>PickUp</b></label> <select
+                    class="formbold-form-input" name="pickUp" id="pickUp">
+                    <option value="">pickUp</option>
+                    <c:forEach items="${pickUp}" var="P">
+                        <option value="${P}">${P}</option>
+                    </c:forEach>
+                </select>
+                <label class="formbold-form-label"><b>Destination</b></label> <select
+                    class="formbold-form-input" name="destination" id="destination">
+                    <option value="">destination</option>
+                    <c:forEach items="${destination}" var="d">
+                        <option value="${d}">${d}</option>
+                    </c:forEach>
+                </select>
             </div>
             <div class="formbold-input-flex">
-                
                 <div>
-                    <label for="PassangerName" class="formbold-form-label"> <b>PassangerName</b>
-                    </label> 
-                    <input type="text" name="passangerName"  value="${aeroplaneDTO.passangerName}" placeholder="PassangerName"
-                        class="formbold-form-input" />
-                        
-                     <label for="Enter Your Gamil-Id"
-                        class="formbold-form-label"> <b>Gamil-Id</b>
-                    </label> <input type="email" name="gmail"  value="${aeroplaneDTO.gmail}"
-                        placeholder="Enter Your Gamil-Id" class="formbold-form-input" />
+                    <label  class="formbold-form-label"><b>OTP-Number</b> </label>
+    <input type="text" name="oTP"  placeholder="OTP" class="formbold-form-input"  value="${uberDTO.getOTP()}"/>
                 </div>
-
                 <div>
-                    <label class="formbold-form-label"><b>Class Type</b></label> <select
-                        class="formbold-form-input" name="classType" id="classType">
-                        <option value="">classType</option>
-                        <c:forEach items="${classType}" var="c">
-                            <option value="${c}">${c}</option>
-                        </c:forEach>
-                    </select> <label class="formbold-form-label"><b>CountryName</b></label> <select
-                        class="formbold-form-input" name="countryName" id="Country">
-                        <option value="">countryNames</option>
-                        <c:forEach items="${countryNames}" var="C">
-                            <option value="${C}">${C}</option>
-                        </c:forEach>
-                    </select>
+                    <label for="priceForRide" class="formbold-form-label"><b>PriceForRide</b>
+                    </label> <input type="text" name="priceForRide"  value="${uberDTO.priceForRide}" id="priceForRide"
+                        placeholder="PriceForRide" class="formbold-form-input" />
                 </div>
             </div>
-           
-            <div class="formbold-input-flex">
-                <div>
-                    <label for="TicketCost" class="formbold-form-label"><b>TicketCost</b>
-                    </label> <input type="text" name="ticketCost"  value="${bigBasketDTO.price}" id="TicketCost"
-                        placeholder="TicketCost" class="formbold-form-input" />
-                </div>
-                <div>
-                    <label for="EnterPlanenumber" class="formbold-form-label"><b>EnterPlanenumber</b>
-                    </label> <input type="text" name="enterPlanenumber" value="${bigBasketDTO.EnterPlanenumber}" id="EnterPlanenumber"
-                        placeholder="EnterPlanenumber" class="formbold-form-input" />
-                </div>
-            </div>
-            
-            <input class="formbold-btn" type="submit" value="Apply" />
+            <div class="formbold-input-flex"><input class="formbold-btn" type="submit" value="Apply" /></div>
         </form>
     </div>
 </div>
+
 </form>
 <style>
 @import
