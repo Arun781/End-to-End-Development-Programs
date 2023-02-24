@@ -52,9 +52,8 @@
 		</ul>
 		<form class="form-inline my-2 my-lg-0" action="me" method="get">
 			<input class="form-control mr-sm-2" type="text" placeholder="Search"
-				aria-label="Search" name="id"> <input type="submit"
-				class="
-				btn btn-primary" value="search" />
+				aria-label="Search" name="id"> 
+				<input type="submit"class="btn btn-primary" value="search" />
 
 		</form>
 	</div>
