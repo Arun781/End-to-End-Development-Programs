@@ -50,22 +50,18 @@
 			<li class="nav-item"><a class="nav-link disabled" href="#"
 				style="color: Blue">Disabled</a></li>
 		</ul>
-		<form class="form-inline my-2 my-lg-0" action="me" method="get">
-			<input class="form-control mr-sm-2" type="text" placeholder="Search"
-				aria-label="Search" name="id"> 
-				<input type="submit"class="btn btn-primary" value="search" />
-
-		</form>
-	</div>
+		<form class="form-inline my-2 my-lg-0" action="tight" method="get">
+		<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="id"> 
+		<input type="submit"class="btn btn-primary" value="search" /></form>
+	    </div>
 </nav>
 <body>
 
 	<h1 style="text-align: center; color: blue"><b>Welcome to search page.....</b></h1>
-	
 	<h4><b>Name:-</b></h4> <h4 style="color: red">${dto.name}</h4><br>
-	<h4><b>BikeNumber:- </b></h4><h4 style="color: red">${dto.bikeNumber}</h4><br>
-	<h4><b>OTP:- </b></h4><h4 style="color: red">${dto.getOTP()}</h4><br>
-	<h4><b>PickUp:-</b></h4><h4 style="color: red">${dto.pickUp}</h4><br>
+	<h4><b>PlaceName:- </b></h4><h4 style="color: red">${dto.place}</h4><br>
+	<h4><b>DOB:- </b></h4><h4 style="color: red">${dto.DOB}</h4><br>
+	<h4><b>Start-Point:-</b></h4><h4 style="color: red">${dto.startPoint}</h4><br>
 	<h4><b>Destination:- </b></h4><h4 style="color: red">${dto.destination}</h4><br>
 	<h4><b>PriceForRide:- </b></h4><h4 style="color: red">${dto.price}</h4><br>
 
