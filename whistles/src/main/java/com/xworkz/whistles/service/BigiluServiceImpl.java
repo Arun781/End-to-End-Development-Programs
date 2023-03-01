@@ -54,6 +54,7 @@ public class BigiluServiceImpl implements BigiluService {
 			BigiluEntity bigiluEntity = bigiluRepository.findBy(id);
 			System.out.println("Running the findByID in service.."+id);
 			BigiluDTO dto= new BigiluDTO();
+			dto.setName(bigiluEntity.getName());
 			dto.setPlace(bigiluEntity.getPlace());
 			dto.setDOB(bigiluEntity.getDOB());
 			dto.setStartPoint(bigiluEntity.getStartPoint());
