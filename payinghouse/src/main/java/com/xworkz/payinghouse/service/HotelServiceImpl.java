@@ -44,7 +44,6 @@ public class HotelServiceImpl implements HotelService {
 		entity.setLastName(hotelDTO.getLastName());
 		entity.setGender(hotelDTO.getGender());
 		entity.setEmail(hotelDTO.getEmail());
-		;
 		entity.setPhoneNum(hotelDTO.getPhoneNum());
 		entity.setPinCode(hotelDTO.getPinCode());
 		entity.setAddress(hotelDTO.getAddress());
@@ -81,6 +80,7 @@ public class HotelServiceImpl implements HotelService {
 		if (firstName != null && !firstName.isEmpty()) {
 			System.out.println("Running the findByFirstName method in service....." + firstName);
 			List<HotelEntity> entities = this.hotelRepository.findByFirstName(firstName);
+			System.out.println(entities.size());
 			List<HotelDTO> listDtos = new ArrayList<HotelDTO>();
 			System.out.println("firstName is valid .....calling repo" + entities);
 			for (HotelEntity hotelEntity : entities) {
@@ -95,12 +95,62 @@ public class HotelServiceImpl implements HotelService {
 				dto.setAddress(hotelEntity.getAddress());
 				dto.setMessage(hotelEntity.getMessage());
 				listDtos.add(dto);
-				return listDtos;
 			}
-
 			System.out.println("Size of the dtos" + listDtos.size());
 			System.out.println("Size of the entities" + entities.size());
+			return listDtos;
 		}
+		
 		return HotelService.super.findByFirstName(firstName);
+	}
+
+	@Override
+	public Set<ConstraintViolation<HotelDTO>> validateAndUpdate(HotelDTO hotelDTO) {
+		System.out.println("Running validateAndUpdate");
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		Set<ConstraintViolation<HotelDTO>> violation = validator.validate(hotelDTO);
+		if (!violation.isEmpty()) {
+			System.out.println("Violation found");
+			return violation;
+
+		} else {
+			System.out.println("No violation");
+			HotelEntity entity = new HotelEntity();
+			entity.setId(hotelDTO.getId());
+			entity.setFirstName(hotelDTO.getFirstName());
+			entity.setLastName(hotelDTO.getLastName());
+			entity.setPinCode(hotelDTO.getPinCode());
+			entity.setPhoneNum(hotelDTO.getPhoneNum());
+			entity.setGender(hotelDTO.getGender());
+			entity.setEmail(hotelDTO.getEmail());
+			entity.setAddress(hotelDTO.getAddress());
+			entity.setMessage(hotelDTO.getMessage());
+			this.hotelRepository.update(entity);
+			return Collections.emptySet();
+		}
+	}
+
+	@Override
+	public boolean validateAnddelete(int id) {
+		System.out.println("Running Validateanddelete");
+		if (id < 0) {
+			return false;
+		} else {
+			boolean deleted=this.hotelRepository.delete(id);
+			System.out.println("Deleted: "+deleted);
+			return deleted;
+//			AmusementParkDTO amusementParkDTO = this.findByID(id);
+//			AmusementParkEntity entity = new AmusementParkEntity();
+//			entity.setAddress(amusementParkDTO.getAddress());
+//			entity.setChildrenAllowed(amusementParkDTO.isChildrenAllowed());
+//			entity.setEntryFee(amusementParkDTO.getEntryFee());
+//			entity.setId(amusementParkDTO.getId());
+//			entity.setName(amusementParkDTO.getName());
+//			entity.setTicketType(amusementParkDTO.getTicketType());
+//			boolean deleted=this.amusementParkRepo.delete(entity);
+//			return deleted;
+		}
+
 	}
 }

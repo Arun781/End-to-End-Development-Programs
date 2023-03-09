@@ -36,6 +36,21 @@ public class HotelController {
 		return "HotelRegester";
 	}
 
+	@PostMapping("/hotelRegester")
+	public String onHotel(Model model, HotelDTO dto) {
+		System.out.println("Running the onSearch post method...." + dto);
+		Set<ConstraintViolation<HotelDTO>> violations = this.hotelService.validateANdSave(dto);
+		if (violations.isEmpty()) {
+			System.out.println("No vioations , goto success page" + dto);
+			model.addAttribute("dto", dto);
+			model.addAttribute("gender", gender);
+			return "Registered";
+		}
+		model.addAttribute("gender", gender);
+		model.addAttribute("error", violations);
+		return "HotelRegester";
+	}
+
 	@GetMapping("/hotel")
 	public String onSearch(@RequestParam int id, Model model) {
 		System.out.println("Running the onSearch" + id);
@@ -48,33 +63,52 @@ public class HotelController {
 		return "HotelSearch";
 	}
 
-	@PostMapping("/hotelRegester")
-	public String onHotel(Model model, HotelDTO dto) {
-		System.out.println("Running the onSearch post method...." + dto);
-		Set<ConstraintViolation<HotelDTO>> violations = this.hotelService.validateANdSave(dto);
-		if (violations.isEmpty()) {
-			System.out.println("No vioations , goto success page" + dto);
-			model.addAttribute("dto", dto);
-			return "HotelRegester";
+	@GetMapping("/firstName")
+	public String onFindByName(Model model, @RequestParam String firstName) {
+		System.out.println("Running onFindByName");
+		List<HotelDTO> list = this.hotelService.findByFirstName(firstName);
+		System.out.println("list size in controller" + list.size());
+		if (list != null && !list.isEmpty()) {
+			model.addAttribute("dtos", list);
+		} else {
+			model.addAttribute("msg", "Data not found");
 		}
-		model.addAttribute("gender", gender);
-		model.addAttribute("error", violations);
-		return "HotelRegester";
+		return "SearchByName";
 	}
 
-	@GetMapping("/firstName")
-	public String onfirstName(@RequestParam String firstName, Model model) {
-		System.out.println("Running the onFirstName methos in controller" + firstName);
-		List<HotelDTO> dtos = this.hotelService.findByFirstName(firstName);
+	@GetMapping("/update")
+	public String onUpdate(@RequestParam int id, Model model) {
+		System.out.println("Running onUpdate");
+		HotelDTO dto = this.hotelService.findBy(id);
+		model.addAttribute("dto", dto);
+		model.addAttribute("gender", gender);
+		return "UpdateHotel";
+	}
 
-		System.out.println("=================================================s");
-		if (!dtos.isEmpty()) {
-			model.addAttribute("list", dtos);
-			return "SearchByName";
-
+	@PostMapping("/update")
+	public String onUpdate(Model model, HotelDTO hotelDTO) {
+		System.out.println("Running onUpdate post");
+		Set<ConstraintViolation<HotelDTO>> violtion = this.hotelService.validateAndUpdate(hotelDTO);
+		if (!violtion.isEmpty()) {
+			model.addAttribute("err", violtion);
+			return "UpdateHotel";
 		} else {
-			return "SearchByName";
-
+			model.addAttribute("msg", "Updated Successfully");
+			return "Updated";
 		}
+	}
+
+	@GetMapping("/delete")
+	public String onDelete(@RequestParam int id, Model model) {
+		System.out.println("Running onDelete");
+		boolean delete = this.hotelService.validateAnddelete(id);
+		if (delete = true) {
+			System.out.println("deleted data of :" + id + delete);
+			model.addAttribute("delete", "Deleted successfully : ID : ");
+			model.addAttribute("id", id);
+		} else {
+			model.addAttribute("notDeleted", "Id not found");
+		}
+		return "SearchByName";
 	}
 }

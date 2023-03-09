@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>HotelSearch</title>
+<link rel="shortcut icon" type="image" href="https://images7.alphacoders.com/379/thumbbig-379773.webp">
 </head>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"

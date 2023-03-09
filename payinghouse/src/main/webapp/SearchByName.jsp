@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,12 +78,15 @@
 
 	
 
-
+	<span style="color: red">${msg }</span>
+	<span style="color: red">${delete }${id }</span>
+	<span style="color: red">${notDeleted }</span>
 	<br>
 	<br>
 	<table style="padding: 25;" class="table table-dark">
 		<col>
 		<tr class="set">
+			<th style="color: rgb(226, 79, 22);" scope="col">Id</th>
 			<th style="color: rgb(226, 79, 22);" scope="col">First Name</th>
 			<th style="color: rgb(226, 79, 22);" scope="col">Last Name</th>
 			<th style="color: rgb(226, 79, 22);" scope="col">Phone Number</th>
@@ -91,9 +95,13 @@
 			<th style="color: rgb(226, 79, 22);" scope="col">Email</th>
 			<th style="color: rgb(226, 79, 22);" scope="col">Address</th>
 			<th style="color: rgb(226, 79, 22);" scope="col">Cover Letter</th>
+			<th style="color: rgb(226, 79, 22);" scope="col">Edit</th>
+	        <th style="color: rgb(226, 79, 22);" scope="col">Delete</th>
 		</tr>
-		<c:forEach items="${list}" var="l">
+		
+		<c:forEach items="${dtos}" var="l">
 			<tr>
+				<td style="color: blueviolet;">${l.id}</td>
 				<td style="color: blueviolet;">${l.firstName}</td>
 				<td style="color: blueviolet;">${l.lastName}</td>
 				<td style="color: blueviolet;">${l.email}</td>
@@ -102,6 +110,8 @@
 				<td style="color: blueviolet;">${l.phoneNum}</td>
 				<td style="color: blueviolet;">${l.address}</td>
 				<td style="color: blueviolet;">${l.message}</td>
+				<td><a href="update?id=${l.id}">edit</a></td>
+	            <td><a href="delete?id=${l.id }" class="btn btn-danger">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

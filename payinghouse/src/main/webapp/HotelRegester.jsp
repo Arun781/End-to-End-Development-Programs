@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <title>Hotel-Regester</title>
@@ -148,12 +148,13 @@
           <label for="message" class="formbold-form-label">
             <b>Cover Letter</b>
           </label>
-          <textarea
+         <input
+         
             rows="6"
             name="message"
             id="message"
             class="formbold-form-input"
-          ></textarea>
+          />
         </div>
   
    <button class="formbold-btn"><b>Apply Now</b></button>

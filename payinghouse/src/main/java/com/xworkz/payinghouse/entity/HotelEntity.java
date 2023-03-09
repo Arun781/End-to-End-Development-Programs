@@ -32,4 +32,5 @@ public class HotelEntity {
 	private String address;
 	@Column(name="h_message")
 	private String message;
+	
 }

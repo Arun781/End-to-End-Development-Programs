@@ -1,7 +1,6 @@
 package com.xworkz.payinghouse.repository;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -33,7 +32,7 @@ public class HotelRepositoryImpl implements HotelRepository {
 
 	@Override
 	public HotelEntity findby(int id) {
-		System.out.println("Running the findby Method in HotelRepo "+id);
+		System.out.println("Running the findby Method in HotelRepo " + id);
 		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
 		HotelEntity entity = entityManager.find(HotelEntity.class, id);
 		entityManager.close();
@@ -44,17 +43,45 @@ public class HotelRepositoryImpl implements HotelRepository {
 	public List<HotelEntity> findByFirstName(String firstName) {
 		System.out.println("Running the findByFirstName Method in HotelRepo ");
 		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
-		//Decide ,TX, adn Query
+		// Decide ,TX, adn Query
 		try {
-		Query query=entityManager.createNamedQuery("findByFirstName");
-		query.setParameter("fname", firstName);
-		List<HotelEntity> list= query.getResultList();
-		System.out.println("Total list found in repo"+list.size());
-		return list;
-		}finally {
+			Query query = entityManager.createNamedQuery("findByFirstName");
+			query.setParameter("fname", firstName);
+			List<HotelEntity> list = query.getResultList();
+			System.out.println("Total list found in repo" + list.size());
+			return list;
+		} finally {
 			entityManager.close();
 		}
-		
+	}
+	@Override
+	public boolean update(HotelEntity hotelEntity) {
+		System.out.println("Running update");
+		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
+		try {
+			EntityTransaction transaction = entityManager.getTransaction();
+			transaction.begin();
+			entityManager.merge(hotelEntity);
+			transaction.commit();
+			return true;
+		} finally {
+			entityManager.close();
+		}
+
+	}
+
+	@Override
+	public boolean delete(int id) {
+		System.out.println("Running delete");
+		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		HotelEntity del=entityManager.find(HotelEntity.class, id);
+		entityTransaction.begin();
+		entityManager.remove(del);
+		entityTransaction.commit();
+		entityManager.close();
+		return true;
+
 	}
 
 }

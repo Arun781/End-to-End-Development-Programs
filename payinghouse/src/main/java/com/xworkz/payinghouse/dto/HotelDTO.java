@@ -7,8 +7,7 @@ import lombok.Data;
 
 @Data
 public class HotelDTO {
-	@NotNull(message = "ID should be not blank")
-	private int id;
+	
 	@NotNull
 	@Size(min = 3,max = 45, message = "FirstName Should be more den Three char and less den 45 char")
 	private String firstName;
@@ -31,5 +30,5 @@ public class HotelDTO {
 	@NotNull
 	@Size(min = 3,max = 500, message = "Message Should be more den Three char and less den 500 char")
 	private String message;
-	
+	private int id;
 }
