@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.xworkz.bankApplication.entity.BankAppEntity;
+import com.xworkz.bankApplication.entity.LoginEntity;
 
 @Repository
 public class BankAppRepositoryImpl implements BankAppRepository {
@@ -80,28 +81,28 @@ public class BankAppRepositoryImpl implements BankAppRepository {
 		return true;
 	}
 
-	//@Override
-//	public boolean user(LoginEntity loginEntity) {
-//		System.out.println("Running the update in repo");
-//		EntityManager manager = this.entityManagerFactory.createEntityManager();
-//		EntityTransaction transaction = manager.getTransaction();
-//		transaction.begin();
-//		manager.merge(loginEntity);
-//		transaction.commit();
-//		manager.close();
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean pwd(LoginEntity loginEntity) {
-//		System.out.println("Running the update in repo");
-//		EntityManager manager = this.entityManagerFactory.createEntityManager();
-//		EntityTransaction transaction = manager.getTransaction();
-//		transaction.begin();
-//		manager.merge(loginEntity);
-//		transaction.commit();
-//		manager.close();
-//		return true;
-//	}
+	@Override
+	public boolean user(LoginEntity loginEntity) {
+		System.out.println("Running the update in repo");
+		EntityManager manager = this.entityManagerFactory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		manager.merge(loginEntity);
+		transaction.commit();
+		manager.close();
+		return true;
+	}
+
+	@Override
+	public boolean pwd(LoginEntity loginEntity) {
+		System.out.println("Running the update in repo");
+		EntityManager manager = this.entityManagerFactory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		manager.merge(loginEntity);
+		transaction.commit();
+		manager.close();
+		return true;
+	}
 
 }

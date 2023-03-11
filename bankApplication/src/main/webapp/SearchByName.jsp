@@ -93,6 +93,8 @@
 <style>
 body {
 	background-color: rgba(2, 2, 2, 0.956);
+	 background-image: url("https://logo-all.ru/uploads/posts/2016-03/thumbs/0_axis_bank_logo-thumb.jpg");
+	
 }
 </style>
 </html>

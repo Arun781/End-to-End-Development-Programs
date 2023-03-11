@@ -58,8 +58,9 @@
 
 .main{
     width: 100%;
-    background-image: url("https://img.freepik.com/premium-vector/isometric-image-bank-currency-dark-blue-background_387612-353.jpg?w=2000"); 
-    background-position: center;
+    background-image: url("https://logo-all.ru/uploads/posts/2016-03/thumbs/0_axis_bank_logo-thumb.jpg");
+	
+	background-position: 100%;
     background-attachment: fixed;
     background-size: cover;
     background-size: cover;

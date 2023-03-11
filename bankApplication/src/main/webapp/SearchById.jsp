@@ -82,8 +82,8 @@
 </body>
 <style>
     body{
-        background-image: url("https://i.pinimg.com/750x/1c/3c/57/1c3c578351b22d58ec6421a671744ff8.jpg");
-        
+        background-image: url("https://logo-all.ru/uploads/posts/2016-03/thumbs/0_axis_bank_logo-thumb.jpg");
+ 
    }
 </style>
 </html>

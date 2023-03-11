@@ -39,14 +39,14 @@
         <a class="nav-link disabled" href="#" style=" color: Red">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+  <!--   <form class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="#">Register</a></button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="#">SearchById</a></button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href=#>SearchByName</a></button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </form>
+    </form> -->
   </div>
 </nav>
 <body>

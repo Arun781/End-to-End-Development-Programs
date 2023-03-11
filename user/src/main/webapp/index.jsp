@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +15,7 @@
     <div class="apna">
     <H1>Online Banking Website</H1>
     </div>
-   
- 
   </div>
-  
 	<div class="container">
 		<h2>Apna_Bank<span>
 		
@@ -27,9 +24,14 @@
 			<h1>Sign in</h1>
 			<p>Stay updated on your professional world</p>
 		</div>
+		<div>
+            <c:forEach items="${error }" var="e">
+            <span style="color: red">${e.message }</span><br>
+            </c:forEach>
+        </div>
 		<div class="your-input">
 			<div class="input">
-				<input type="text" name="email" id="email" required />
+				<input type="email" name="userName" id="email" required />
 				<label for="email">Email</label>
 			</div>
 			<div class="input">

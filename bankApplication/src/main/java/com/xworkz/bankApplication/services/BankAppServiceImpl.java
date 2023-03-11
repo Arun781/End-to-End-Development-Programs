@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xworkz.bankApplication.dto.BankAppDTO;
+import com.xworkz.bankApplication.dto.LoginDto;
 import com.xworkz.bankApplication.entity.BankAppEntity;
+import com.xworkz.bankApplication.entity.LoginEntity;
 import com.xworkz.bankApplication.repository.BankAppRepository;
 
 @Service
@@ -33,7 +35,6 @@ public class BankAppServiceImpl implements BankAppService {
 		}
 		System.out.println("violations not found");
 		BankAppEntity appEntity = new BankAppEntity();
-		appEntity.setId(serviceDTO.getId());
 		appEntity.setName(serviceDTO.getName());
 		appEntity.setIfscCode(serviceDTO.getIfscCode());
 		appEntity.setAddress(serviceDTO.getAddress());
@@ -90,7 +91,7 @@ public class BankAppServiceImpl implements BankAppService {
 				appDTO.setPassword(appEntity.getPassword());
 				appDTO.setReenterpas(appEntity.getReenterpas());
 				list.add(appDTO);
-				
+
 			}
 			System.out.println("Size of dtos" + list.size());
 			System.out.println("Size of entities" + appEntities.size());
@@ -134,42 +135,43 @@ public class BankAppServiceImpl implements BankAppService {
 		}
 	}
 
-//	@Override
-//	public Set<ConstraintViolation<LoginDto>> user(LoginDto loginDto) {
-//		System.out.println("Running the UserName in Service....");
-//		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-//		Validator validator = factory.getValidator();
-//		Set<ConstraintViolation<LoginDto>> violations = validator.validate(loginDto);
-//		if (violations.isEmpty()) {
-//			System.out.println("Violation found");
-//			return violations;
-//		} else {
-//			System.out.println("No violations");
-//			LoginEntity loginEntity = new LoginEntity();
-//			loginEntity.setId(loginDto.getId());
-//			loginEntity.setUserName(loginDto.getUserName());
-//			this.bankAppRepository.user(loginEntity);
-//			return Collections.emptySet();
-//		}
-//	}
-//
-//	@Override
-//	public Set<ConstraintViolation<LoginDto>> pwd(LoginDto loginDto) {
-//		System.out.println("Runnig the pwd in serviceImpl");
-//		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-//		Validator validator = factory.getValidator();
-//		Set<ConstraintViolation<LoginDto>> violations = validator.validate(loginDto);
-//		if (violations.isEmpty()) {
-//			System.out.println("violations found");
-//			return violations;
-//		}else {
-//			System.out.println("No violations");
-//			LoginEntity loginEntity = new LoginEntity();
-//			loginEntity.setId(loginDto.getId());
-//			loginDto.setPassWord(loginDto.getPassWord());
-//			this.bankAppRepository.user(loginEntity);
-//			return Collections.emptySet();	
-//		}
-//		
-//	}
+	@Override
+	public Set<ConstraintViolation<LoginDto>> user(LoginDto loginDto) {
+		System.out.println("Running the UserName in Service....");
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		Set<ConstraintViolation<LoginDto>> violations = validator.validate(loginDto);
+		if (violations.isEmpty()) {
+			System.out.println("Violation found");
+			return violations;
+		} else {
+			System.out.println("No violations");
+			LoginEntity loginEntity = new LoginEntity();
+			loginEntity.setId(loginDto.getId());
+			loginEntity.setUserName(loginDto.getUserName());
+			this.bankAppRepository.user(loginEntity);
+			return Collections.emptySet();
+		}
+	}
+
+	@Override
+	public Set<ConstraintViolation<LoginDto>> pwd(LoginDto loginDto) {
+		System.out.println("Runnig the pwd in serviceImpl");
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		Set<ConstraintViolation<LoginDto>> violations = validator.validate(loginDto);
+		if (violations.isEmpty()) {
+			System.out.println("violations found");
+			return violations;
+		} else {
+			System.out.println("No violations");
+			LoginEntity loginEntity = new LoginEntity();
+			loginEntity.setId(loginDto.getId());
+			loginDto.setPassWord(loginDto.getPassWord());
+			this.bankAppRepository.user(loginEntity);
+			return Collections.emptySet();
+		}
+
+	}
+
 }

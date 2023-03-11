@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 
 import com.xworkz.bankApplication.dto.BankAppDTO;
+import com.xworkz.bankApplication.dto.LoginDto;
 
 public interface BankAppService {
 	Set<ConstraintViolation<BankAppDTO>> validateAndSave(BankAppDTO serviceDTO);
@@ -25,6 +26,8 @@ public interface BankAppService {
 		return true;
 	}
 	
-//	Set<ConstraintViolation<LoginDto>> user(LoginDto loginDto);
-//	Set<ConstraintViolation<LoginDto>> pwd(LoginDto loginDto);
+
+	  Set<ConstraintViolation<LoginDto>> user(LoginDto loginDto);
+	  Set<ConstraintViolation<LoginDto>> pwd(LoginDto loginDto);
+	 
 }

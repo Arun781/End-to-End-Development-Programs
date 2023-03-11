@@ -10,7 +10,6 @@
 </head>
 <body>
 	<form action="bankApp" method="post">
-
 		<div class="main">
 			<div class="navbar">
 				<div class="icon">
@@ -19,11 +18,11 @@
 
 				<div class="menu">
 					<ul>
-						<li><a href="index.jsp">HOME</a></li>
+						<li><a href="index.jsp">Home</a></li>
 						<li><a href="SearchById.jsp">SearchById</a></li>
 						<li><a href="SearchByName.jsp">SearchByName</a></li>
 						<li><a href="UpdateBank.jsp">UpdateBank</a></li>
-						<li><a href="#">CONTACT</a></li>
+						<!--<li><a href="#">CONTACT</a></li>  -->
 					</ul>
 				</div>
 
@@ -36,26 +35,30 @@
 			</div>
 			<div class="content">
 				<h1>
-					Apna <br> <span>Registration</span> <br>Form
+					<b>Apna Account</b> <br> <b></b><span>Registration</span> <br>Form</b>
 				</h1>
-
 				<br> <br> <br>
 				<button class="cn">
 					<a href="#">JOIN US</a>
 				</button>
             </div>
 				<div class="form">
-					<h2>Enter Details</h2>
+					<h2>Basic Details</h2>
+          <div>
+            <c:forEach items="${error }" var="e">
+            <span style="color: red">${e.message }</span><br>
+            </c:forEach>
+            </div>
 					<input type="text" name="name" placeholder="Enter Full Name">
 				    <input type="text" name="phoneNum" placeholder="Phone Number">
                     <input type="text" name="email" placeholder="E-Mail">
 					<input type="text" name="aadharNum" placeholder="Aadhar Number">
                     <input type="text" name="ifscCode" placeholder="IFSC code">
 					<input type="text" name="branch" placeholder="Branch Name">
-					<input type="text" name="address" placeholder="Permanent Address">
+					<input type="text" name="address" placeholder="Address">
 					<input type="text" name="password" placeholder="Enter Password">
                     <input type="text" name="reenterpas" placeholder="Re Enter Password">
-					<button class="btnn">Sign-Up</button>
+					<button class="btnn" href="index.jsp">Sign-Up</button>
 					<!-- <p class="link">
 						Go to<br> <a href="index.jsp">Log-in </a>
 						here</a>
@@ -242,7 +245,7 @@ ul li a:hover {
 
 .form {
 	width: 250px;
-	height: 740px;
+	
 	background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 50%,
 		rgba(0, 0, 0, 0.8) 50%);
 	position: absolute;
@@ -251,6 +254,7 @@ ul li a:hover {
 	transform: translate(0%, -5%);
 	border-radius: 10px;
 	padding: 25px;
+	height: auto;
 }
 
 .form h2 {
@@ -318,7 +322,6 @@ ul li a:hover {
 	font-size: 17px;
 	padding-top: 20px;
     margin-left: 25%;
-	
     color: #ffffff;
 }
 

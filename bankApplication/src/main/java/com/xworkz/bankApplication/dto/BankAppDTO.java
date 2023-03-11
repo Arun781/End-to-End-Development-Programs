@@ -17,7 +17,7 @@ public class BankAppDTO {
 	@Size(min=2,max=45,message = "The IFSC-Code should be more den two char and less den 45 char")
 	private String ifscCode;
 	@NotNull(message = "Address should not be null")
-	@Size(min=2,max=45,message = "The Address should be more den two char and less den 45 char")
+	@Size(min=2,max=250,message = "The Address should be more den two char and less den 45 char")
 	private String address;
 	@NotNull(message = "Phone num should not be null")
 	private String phoneNum;

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.xworkz.bankApplication.dto.BankAppDTO;
+import com.xworkz.bankApplication.dto.LoginDto;
 import com.xworkz.bankApplication.services.BankAppService;
 
 @Controller
@@ -18,10 +19,12 @@ import com.xworkz.bankApplication.services.BankAppService;
 public class BankAppController {
 	@Autowired
 	private BankAppService appService;
+	 
 
 	public BankAppController() {
 		System.out.println("Created " + this.getClass().getSimpleName());
 	}
+
 	@GetMapping("/bankApp")
 	public String onBank(Model model) {
 		System.out.println("Running the onHotel in controller....");
@@ -35,11 +38,12 @@ public class BankAppController {
 		if (violations.isEmpty()) {
 			System.out.println("No violation, goto success page" + appDTO);
 			model.addAttribute("app", appDTO);
-			return "CustomerReg";
+			return "index";
 		}
+		violations.forEach(cv -> System.out.println(cv.getMessage()));
 		model.addAttribute("msg", "Registered Successfully");
 		model.addAttribute("error", violations);
-		return "index";
+		return "CustomerReg";
 	}
 
 	@GetMapping("/search")
@@ -60,83 +64,71 @@ public class BankAppController {
 		List<BankAppDTO> list = this.appService.findByName(name);
 		System.out.println("List Size in controller" + list.size());
 		if (list != null && !list.isEmpty()) {
-			
+
 			model.addAttribute("dtos", list);
 		} else {
 			model.addAttribute("msg", "Data not found");
 		}
 		return "SearchByName";
 	}
+
 	@GetMapping("/update")
 	public String onUpdate(@RequestParam int id, Model model) {
 		System.out.println("Running the onUpdate...");
-		BankAppDTO appDTO=this.appService.findBy(id);
-		model.addAttribute("apps",appDTO);
+		BankAppDTO appDTO = this.appService.findBy(id);
+		model.addAttribute("apps", appDTO);
 		return "UpdateBank";
 	}
+
 	@PostMapping("/update")
-	public String onUpdate(Model model,BankAppDTO appDTO) {
+	public String onUpdate(Model model, BankAppDTO appDTO) {
 		System.out.println("Running onUpdate post");
-		Set<ConstraintViolation<BankAppDTO>> violtion= this.appService.update(appDTO);
-		if(!violtion.isEmpty()) {
-			model.addAttribute("err",violtion);
+		Set<ConstraintViolation<BankAppDTO>> violtion = this.appService.update(appDTO);
+		if (!violtion.isEmpty()) {
+			model.addAttribute("err", violtion);
 			return "UpdateBank";
-		}else {
+		} else {
 			model.addAttribute("msg", "Updated Successfully");
-		return "Updated";
+			return "Updated";
 		}
 	}
-	
+
 	@GetMapping("/delete")
-	public String onDelete(@RequestParam int id,Model model) {
+	public String onDelete(@RequestParam int id, Model model) {
 		System.out.println("Running onDelete");
-		boolean delete=this.appService.delete(id);
-		if(delete=true) {
-			System.out.println("deleted data of :"+id+delete);
+		boolean delete = this.appService.delete(id);
+		if (delete = true) {
+			System.out.println("deleted data of :" + id + delete);
 			model.addAttribute("delete", "Deleted successfully : ID :");
-			model.addAttribute("id",id);
-		}else {
-			model.addAttribute("notDeleted","Id not found");
+			model.addAttribute("id", id);
+		} else {
+			model.addAttribute("notDeleted", "Id not found");
 		}
 		return "SearchByName";
 	}
-//	@GetMapping("/user")
-//	public String onUser(@RequestParam int id, Model model) {
-//		System.out.println("Running the onUpdate...");
-//		BankAppDTO appDTO=this.appService.findBy(id);
-//		model.addAttribute("apps",appDTO);
-//		return "index";
-//	}
-//	@PostMapping("/user")
-//	public String onUser(Model model,LoginDto loginDto) {
-//		System.out.println("Running onUpdate post");
-//		Set<ConstraintViolation<LoginDto>> violtion= this.appService.user(loginDto);
-//		if(!violtion.isEmpty()) {
-//			model.addAttribute("err",violtion);
-//			return "index";
-//		}else {
-//			model.addAttribute("msg", "Updated Successfully");
-//		return "index";
-//		}
-//	}
-//	@GetMapping("/user")
-//	public String onPass(@RequestParam int id, Model model) {
-//		System.out.println("Running the onUpdate...");
-//		BankAppDTO appDTO=this.appService.findBy(id);
-//		model.addAttribute("apps",appDTO);
-//		return "index";
-//	}
-//	@PostMapping("/user")
-//	public String onPass(Model model,LoginDto loginDto) {
-//		System.out.println("Running onUpdate post");
-//		Set<ConstraintViolation<LoginDto>> violtion= this.appService.user(loginDto);
-//		if(!violtion.isEmpty()) {
-//			model.addAttribute("err",violtion);
-//			return "index";
-//		}else {
-//			model.addAttribute("msg", "Updated Successfully");
-//		return "index";
-//		}
-//	}
-	
+
+	@GetMapping("/login")
+	public String onLogin(@RequestParam int id, Model model,LoginDto loginDto) {
+		System.out.println("Running the onSearch" + id);
+		Set<ConstraintViolation<LoginDto>> appDTO = this.appService.user(loginDto);
+		if (appDTO != null) {
+			model.addAttribute("apps", appDTO);
+		} else {
+			model.addAttribute("message", "data not found");
+		}
+		return "index";
+	}
+
+	@PostMapping("/login")
+	public String onLog(@RequestParam int id, Model model,LoginDto loginDto) {
+		System.out.println("Running the onSearch" + id);
+		Set<ConstraintViolation<LoginDto>> appDTO = this.appService.pwd(loginDto);
+		if (appDTO != null) {
+			model.addAttribute("apps", appDTO);
+		} else {
+			model.addAttribute("message", "data not found");
+		}
+		return "index";
+	}
+
 }
