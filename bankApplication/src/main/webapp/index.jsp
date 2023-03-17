@@ -7,26 +7,29 @@
 <title>Apna-Bank</title>
 </head>
 <body>
-<form action="login" method="post">
+<form action="login" method="get">
   <div class="nav">
     <div class="image">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK__L7wxH4f58z-o5ItAc4EEOcy9FAkGCDnQ&usqp=CAU" width="250px" height="100px" >
     </div>
-    <div class="apna">
-    <H1>Online Banking Website</H1>
-    </div>
+    <div id="header" class="head">
+            <h1>Online Banking Website</h1>
+            <a href="home.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK__L7wxH4f58z-o5ItAc4EEOcy9FAkGCDnQ&usqp=CAU" alt="Online Banking System"
+                    title="Online Banking Website"></a>
+        </div>
    
  
   </div>
   
 	<div class="container">
 		<h2>Apna_Bank<span>
-		
 		</span></h2>
 		<div class="text">
-			<h1>Sign in</h1>
+			<h2>Sign in</h2>
 			<p>Stay updated on your professional world</p>
 		</div>
+				<span style="color: red">${loginMsg }</span>
+		
 		<div class="your-input">
 			<div class="input">
 				<input type="text" name="email" id="email" required />
@@ -52,14 +55,51 @@
 
 body{
     background-color: black;
-    background-image: url("https://logo-all.ru/uploads/posts/2016-03/thumbs/0_axis_bank_logo-thumb.jpg");
-}
+ background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNduHZEKPAuJCJ-PGcgI6KV4AP7csqiZkQ7aik52es&s");
+   }
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
     color: #000;
+}
+h1{
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    font-weight:bolder;
+    height:75px;
+    word-spacing: 1.5px;
+    letter-spacing: 5px;
+    padding-top:20px;
+    margin-left: -155px;
+    font-size:50px;
+    text-shadow: 5px 5px 5px grey;
+}
+.head{
+    position: fixed;
+    top:0px;
+    text-align: center;	
+}
+#header img{
+    height:75px;
+    width:300px;
+    border-radius:20px;
+    position:absolute;
+    top:10px;
+    left:15px;
+}
+img:hover{
+    border:15px solid black;
+    transition-duration: 0.20s;
+}
+#header{
+    background-color: #f5009bdd;
+    height:100px;
+    width:100em;
+    margin-bottom: 10px;
+    /* border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px; */
 }
 
 .nav{
@@ -79,8 +119,8 @@ body{
     font-size: larger;
 }
 .container {
-	width: 320px;
-	height: 480px;
+	width: 350px;
+	height: 500px;
 	background:  #ff4ebedd;
 	/* box-shadow: 0 10px 15px rgba(179, 179, 179, 0.7); */
 	position: absolute;
@@ -99,6 +139,16 @@ body{
 .container h2{
 	color: #000000;
 	font-size: 1.6rem;
+	text-align: center;
+    font-family: 'Times New Roman', serif;
+    font-weight:bolder;
+    height:75px;
+    word-spacing: 1.5px;
+    letter-spacing: 5px;
+    padding-top:20px;
+    margin: 0px;
+    font-size:50px;
+    text-shadow: 5px 5px 5px grey;
 }
 .text p{
 	font-size: .8rem;

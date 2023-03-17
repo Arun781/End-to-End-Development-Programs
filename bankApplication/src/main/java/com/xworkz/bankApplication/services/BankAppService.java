@@ -7,7 +7,6 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 
 import com.xworkz.bankApplication.dto.BankAppDTO;
-import com.xworkz.bankApplication.dto.LoginDto;
 
 public interface BankAppService {
 	Set<ConstraintViolation<BankAppDTO>> validateAndSave(BankAppDTO serviceDTO);
@@ -20,14 +19,26 @@ public interface BankAppService {
 		return Collections.emptyList();
 	}
 
+	default List<BankAppDTO> findByBranch(String branch) {
+		return Collections.emptyList();
+	}
+
 	Set<ConstraintViolation<BankAppDTO>> update(BankAppDTO appDTO);
 
 	default boolean delete(int id) {
 		return true;
 	}
-	
 
-	  Set<ConstraintViolation<LoginDto>> user(LoginDto loginDto);
-	  Set<ConstraintViolation<LoginDto>> pwd(LoginDto loginDto);
-	 
+	default BankAppDTO findByEmail(String email) {
+		return null;
+	}
+
+	default List<BankAppDTO> findAll() {
+		return Collections.emptyList();
+	}
+
+	default List<BankAppDTO> findByNameAndBranch(String name, String branch) {
+		return null;
+	}
+
 }

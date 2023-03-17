@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.xworkz.bankApplication.dto.BankAppDTO;
-import com.xworkz.bankApplication.dto.LoginDto;
+import com.xworkz.bankApplication.entity.BankAppEntity;
 import com.xworkz.bankApplication.services.BankAppService;
 
 @Controller
@@ -19,7 +19,6 @@ import com.xworkz.bankApplication.services.BankAppService;
 public class BankAppController {
 	@Autowired
 	private BankAppService appService;
-	 
 
 	public BankAppController() {
 		System.out.println("Created " + this.getClass().getSimpleName());
@@ -32,17 +31,30 @@ public class BankAppController {
 	}
 
 	@PostMapping("/bankApp")
-	public String onBank(Model model, BankAppDTO appDTO) {
+	public String onBank(Model model, BankAppDTO appDTO, @RequestParam String password, @RequestParam String reenterpas,
+			@RequestParam String email) {
 		System.out.println("Running the onBank in Controller...");
+		// BankAppDTO dto = this.appService.findByEmail(email);
+//		if (email.equals(dto.getEmail())) {
+//			model.addAttribute("same", "Email already exist");
+//			return "CustomerReg";
+//		} else {
 		Set<ConstraintViolation<BankAppDTO>> violations = this.appService.validateAndSave(appDTO);
 		if (violations.isEmpty()) {
 			System.out.println("No violation, goto success page" + appDTO);
-			model.addAttribute("app", appDTO);
-			return "index";
+			if (password.equals(reenterpas)) {
+				model.addAttribute("dto", appDTO);
+				model.addAttribute("success", "Register Successfully");
+				return "CustomerReg";
+			} else {
+				model.addAttribute("dto", appDTO);
+				model.addAttribute("pass", "Re-entered password not match");
+				return "CustomerReg";
+			}
 		}
 		violations.forEach(cv -> System.out.println(cv.getMessage()));
-		model.addAttribute("msg", "Registered Successfully");
 		model.addAttribute("error", violations);
+		model.addAttribute("dto", appDTO);
 		return "CustomerReg";
 	}
 
@@ -70,6 +82,19 @@ public class BankAppController {
 			model.addAttribute("msg", "Data not found");
 		}
 		return "SearchByName";
+	}
+	@GetMapping("/byBranch")
+	public String onFindByBranch(Model model, @RequestParam String branch) {
+		System.out.println("Running the onFindByBranch in controller...");
+		List<BankAppDTO> list = this.appService.findByBranch(branch);
+		System.out.println("List Size in controller" + list.size());
+		if (list != null && !list.isEmpty()) {
+
+			model.addAttribute("dtos", list);
+		} else {
+			model.addAttribute("msg", "Data not found");
+		}
+		return "SearchByBranch";
 	}
 
 	@GetMapping("/update")
@@ -108,27 +133,66 @@ public class BankAppController {
 	}
 
 	@GetMapping("/login")
-	public String onLogin(@RequestParam int id, Model model,LoginDto loginDto) {
-		System.out.println("Running the onSearch" + id);
-		Set<ConstraintViolation<LoginDto>> appDTO = this.appService.user(loginDto);
-		if (appDTO != null) {
-			model.addAttribute("apps", appDTO);
+	public String onLogin(@RequestParam String email, @RequestParam String password, Model model) {
+		System.out.println("Running the onLogin " + email);
+		BankAppDTO dto = this.appService.findByEmail(email);
+		if (password.equals(dto.getPassword()) && email.equals(dto.getEmail())) {
+			return "Passed";
 		} else {
-			model.addAttribute("message", "data not found");
+			model.addAttribute("loginMsg", "Email or password not found");
+			return "index";
 		}
-		return "index";
 	}
 
-	@PostMapping("/login")
-	public String onLog(@RequestParam int id, Model model,LoginDto loginDto) {
-		System.out.println("Running the onSearch" + id);
-		Set<ConstraintViolation<LoginDto>> appDTO = this.appService.pwd(loginDto);
-		if (appDTO != null) {
-			model.addAttribute("apps", appDTO);
+	@GetMapping("findAll")
+	public String onFindAll(Model model) {
+		System.out.println("Running On FindAll in Controller");
+		List<BankAppDTO> dto = this.appService.findAll();
+		System.out.println(dto.size());
+		if (dto != null) {
+			model.addAttribute("dtos", dto);
+			return "FindAll";
 		} else {
-			model.addAttribute("message", "data not found");
+			model.addAttribute("message", "Data not Found");
+			return "FindAll";
 		}
-		return "index";
+	}
+		
+	
+
+	@PostMapping("byNameAndBranch")
+	public String findByNameAndBranch(@RequestParam String name, @RequestParam String branch, Model model) {
+		System.out.println("Running onFindByNameAndLocation in controller:" + name + branch);
+		if (!name.isEmpty() && branch.isEmpty()) {
+			List<BankAppDTO> dtoname = this.appService.findByName(name);
+			if (dtoname.size() != 0) {
+				model.addAttribute("dtoname", dtoname);
+				return "FindByNameAndBranch";
+			} else {
+				model.addAttribute("message", "name not found");
+				return "FindByNameAndBranch";
+			}
+		} else if (name.isEmpty() && !branch.isEmpty()) {
+			List<BankAppDTO> dtoLocation = this.appService.findByBranch(branch);
+			if (dtoLocation.size() != 0) {
+				model.addAttribute("dtoLocation", dtoLocation);
+				return "FindByNameAndBranch";
+			} else {
+				model.addAttribute("message", "location not found");
+				return "FindByNameAndBranch";
+			}
+
+		} else {
+
+			List<BankAppDTO> dto = this.appService.findByNameAndBranch(name,branch);
+			if (dto != null) {
+				model.addAttribute("dto", dto);
+				return "FindByNameAndBranch";
+			} else {
+				model.addAttribute("messege", "data not Found");
+			}
+			return "FindByNameAndBranch";
+		}
 	}
 
 }

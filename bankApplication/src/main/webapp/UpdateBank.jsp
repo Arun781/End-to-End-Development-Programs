@@ -23,8 +23,8 @@
                     <li><a href="index.jsp">HOME</a></li>
                     <li><a href="SearchById.jsp">SearchById</a></li>
                     <li><a href="SearchByName.jsp">SearchByName</a></li>
-                    <li><a href="#">DESIGN</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                     <li><a href="SearchByBranch.jsp">SearchByBranch</a></li>
+                    <li>  <a href= "FindByNameAndBranch.jsp">FindByNameAndBranch</a></li>
                 </ul>
             </div>
 
@@ -32,7 +32,7 @@
         </div> 
         <div class="content">
             <h1>Apna  <br><span>Application</span> <br>Form</h1>
-                <button class="cn"><a href="#">JOIN US</a></button>
+                <button class="cn"><a href="CustomerReg.jsp">JOIN US</a></button>
                 <div class="form">
                     <h2>Update Details</h2>
                     <input type="text" name="id" value="${apps.id}" placeholder="Id">
@@ -40,6 +40,11 @@
                     <input type="text" name="ifscCode" value="${apps.ifscCode}" placeholder="Enter Full Name">
                     <input type="text" name="branch" value="${apps.branch}" placeholder="Branch Name">
                     <input type="text" name="address" value="${apps.address}" placeholder="Address Name">
+                    <input type="text" name="phoneNum" placeholder="Phone Number" value="${apps.phoneNum }">
+                    <input type="text" name="email" placeholder="E-Mail" value="${apps.email }">
+					<input type="text" name="aadharNum" placeholder="Aadhar Number" value="${apps.aadharNum }">
+                    <input type="text" name="password" placeholder="Enter Password" value="${apps.password}">
+                    <input type="text" name="reenterpas" placeholder="Re Enter Password" value="${apps.reenterpas }">
                     <button class="btnn" >Update-Login</button>
                     <p class="link">Don't have an account<br>
                     <a href="index.jsp">Log-in </a> here</a></p>
@@ -58,25 +63,28 @@
 
 .main{
     width: 100%;
-    background-image: url("https://logo-all.ru/uploads/posts/2016-03/thumbs/0_axis_bank_logo-thumb.jpg");
-	
+ background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNduHZEKPAuJCJ-PGcgI6KV4AP7csqiZkQ7aik52es&s");
+   
 	background-position: 100%;
     background-attachment: fixed;
     background-size: cover;
     background-size: cover;
-    height: 100%;
+    height: auto;
 }
 
 .navbar{
-    width: 1200px;
+ 	display: block;
+    background-color: #ff7200;
+    width: 1500px;
     height: 75px;
     margin: auto;
+    
 }
 
 
 
 .logo{
-    color: #ff7200;
+    color: black;
     font-size: 35px;
     font-family: Arial;
     padding-left: 20px;
@@ -219,7 +227,7 @@ ul li a:hover{
 
 .form{
     width: 250px;
-    height: 500px;
+    height: auto;
     background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
     position: relative;
     top:auto;
@@ -253,7 +261,7 @@ ul li a:hover{
     color: #fff;
     font-size: 15px;
     letter-spacing: 1px;
-    margin-top: 30px;
+    margin-top: 10px;
     font-family: sans-serif;
 }
 

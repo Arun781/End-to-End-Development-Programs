@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.xworkz.bankApplication.entity.BankAppEntity;
-import com.xworkz.bankApplication.entity.LoginEntity;
 
 @Repository
 public class BankAppRepositoryImpl implements BankAppRepository {
@@ -55,6 +54,20 @@ public class BankAppRepositoryImpl implements BankAppRepository {
 			entityManager.close();
 		}
 	}
+	@Override
+	public List<BankAppEntity> findByBranch(String branch) {
+		System.out.println("Running the findByBranch in repo..");
+		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
+		try {
+			Query query = entityManager.createNamedQuery("findByBranch");
+			query.setParameter("branch", branch);
+			List<BankAppEntity> list = query.getResultList();
+			System.out.println("Total list found in repo" + list.size());
+			return list;
+		} finally {
+			entityManager.close();
+		}
+	}
 
 	@Override
 	public boolean update(BankAppEntity updateEntity) {
@@ -82,27 +95,46 @@ public class BankAppRepositoryImpl implements BankAppRepository {
 	}
 
 	@Override
-	public boolean user(LoginEntity loginEntity) {
-		System.out.println("Running the update in repo");
-		EntityManager manager = this.entityManagerFactory.createEntityManager();
-		EntityTransaction transaction = manager.getTransaction();
-		transaction.begin();
-		manager.merge(loginEntity);
-		transaction.commit();
-		manager.close();
-		return true;
+	public BankAppEntity findByEmail(String email) {
+		System.out.println("Running the findByEmail in repo");
+		EntityManager entityManager= this.entityManagerFactory.createEntityManager();
+		Query query=entityManager.createNamedQuery("findByEmail");
+		query.setParameter("mail", email);
+		Object entity=query.getSingleResult();
+		BankAppEntity ent=(BankAppEntity)entity;
+		return ent;
 	}
-
+	
 	@Override
-	public boolean pwd(LoginEntity loginEntity) {
-		System.out.println("Running the update in repo");
-		EntityManager manager = this.entityManagerFactory.createEntityManager();
-		EntityTransaction transaction = manager.getTransaction();
-		transaction.begin();
-		manager.merge(loginEntity);
-		transaction.commit();
-		manager.close();
-		return true;
+	public List<BankAppEntity> findAll() {
+		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
+		try {
+			Query query = entityManager.createNamedQuery("findAll");
+			System.out.println("Query:" + query);
+			List<BankAppEntity> list = query.getResultList();
+			System.out.println(list);
+			return list;
+		} finally {
+			entityManager.close();
+		}
+	}
+	
+	@Override
+	public List<BankAppEntity> findByNameAndBranch(String name, String branch) {
+		System.out.println("Running FindByNAmeAndLocation:"+name+branch);
+
+		EntityManager manager=this.entityManagerFactory.createEntityManager();
+		try {
+		Query query=manager.createNamedQuery("findByNameAndBranch");
+		query.setParameter("name", name);
+		query.setParameter("branch", branch);
+		System.out.println("Query:"+query);
+		List<BankAppEntity> list=query.getResultList();
+		System.out.println("List found in repo:"+list.size());
+		return list;
+		}finally {
+			manager.close();
+		}
 	}
 
 }

@@ -6,9 +6,9 @@
 <html lang="en">
 <head>
 <title>Webpage Design</title>
-<!-- <link rel="stylesheet" href="WebPage.css"> -->
 </head>
 <body>
+   
 	<form action="bankApp" method="post">
 		<div class="main">
 			<div class="navbar">
@@ -16,21 +16,26 @@
 					<h2 class="logo">Apna_Bank</h2>
 				</div>
 
-				<div class="menu">
-					<ul>
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="SearchById.jsp">SearchById</a></li>
-						<li><a href="SearchByName.jsp">SearchByName</a></li>
-						<li><a href="UpdateBank.jsp">UpdateBank</a></li>
-						<!--<li><a href="#">CONTACT</a></li>  -->
-					</ul>
-				</div>
+                <div class="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                    <div class="dropdown-content">
+                      <a href="SearchById.jsp">SearchById</a>
+                      <a href="SearchByName.jsp">SearchByName</a>
+                      <a href="UpdateBank.jsp">UpdateBank</a>
+                      <a href="SearchByBranch.jsp">SearchByBranch</a>
+                      <a href= "FindByNameAndBranch.jsp">FindByNameAndBranch</a>
+                       <a href= "findAll">FindAll</a>
+                      
+ 
+                    </div>
+                </div>
+              </div>
 
 				<div class="search">
-					<input class="srch" type="search" name=""
+					<!-- <input class="srch" type="search" name=""
 						placeholder="Type To text"> <a href="#">
 						<button class="btn">Search</button>
-					</a>
+					</a> -->
 				</div>
 			</div>
 			<div class="content">
@@ -39,25 +44,29 @@
 				</h1>
 				<br> <br> <br>
 				<button class="cn">
-					<a href="#">JOIN US</a>
+					<a href="index.jsp">Home_Page</a>
 				</button>
             </div>
 				<div class="form">
 					<h2>Basic Details</h2>
+					
+					
           <div>
+          	<span style="color: green">${success }</span><br>
+          	<span style="color: red">${pass }</span>
             <c:forEach items="${error }" var="e">
             <span style="color: red">${e.message }</span><br>
             </c:forEach>
             </div>
-					<input type="text" name="name" placeholder="Enter Full Name">
-				    <input type="text" name="phoneNum" placeholder="Phone Number">
-                    <input type="text" name="email" placeholder="E-Mail">
-					<input type="text" name="aadharNum" placeholder="Aadhar Number">
-                    <input type="text" name="ifscCode" placeholder="IFSC code">
-					<input type="text" name="branch" placeholder="Branch Name">
-					<input type="text" name="address" placeholder="Address">
-					<input type="text" name="password" placeholder="Enter Password">
-                    <input type="text" name="reenterpas" placeholder="Re Enter Password">
+					<input type="text" name="name" placeholder="Enter Full Name" value="${dto.name }">
+				    <input type="text" name="phoneNum" placeholder="Phone Number" value="${dto.phoneNum }">
+                    <input type="text" name="email" placeholder="E-Mail" value="${dto.email }">
+					<input type="text" name="aadharNum" placeholder="Aadhar Number" value="${dto.aadharNum }">
+                    <input type="text" name="ifscCode" placeholder="IFSC code" value="${dto.ifscCode }">
+					<input type="text" name="branch" placeholder="Branch Name" value="${dto.branch }">
+					<input type="text" name="address" placeholder="Address" value="${dto.address }">
+					<input type="text" name="password" placeholder="Enter Password" >
+                    <input type="text" name="reenterpas" placeholder="Re Enter Password" >
 					<button class="btnn" href="index.jsp">Sign-Up</button>
 					<!-- <p class="link">
 						Go to<br> <a href="index.jsp">Log-in </a>
@@ -70,8 +79,10 @@
 		</div>
 		</div>
 	</form>
+  
 </body>
 <style>
+
 * {
 	margin: 0;
 	padding: 0;
@@ -79,18 +90,15 @@
 
 body {
 	width: 100%;
-	background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%,
-		rgba(0, 0, 0, 0.5) 50%),
-		url("https://img.freepik.com/premium-vector/isometric-image-bank-currency-dark-blue-background_387612-353.jpg?w=2000");
-	background-position: center;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNduHZEKPAuJCJ-PGcgI6KV4AP7csqiZkQ7aik52es&s");
+    background-position: center;
 	background-size: cover;
 	height: 100vh;
 }
 
 .navbar {
-	width: 1200px;
-	height: 75px;
-	margin: auto;
+    display: flexbox;
+	
 }
 
 .icon {
@@ -100,13 +108,17 @@ body {
 }
 
 .logo {
-	color: #ff7200;
-	font-size: 35px;
-	font-family: Arial;
-	padding-left: 20px;
-	float: left;
-	padding-top: 10px;
-	margin-top: 5px
+    display: flexbox;
+    background-color: #ff7200;
+    width: 1500px;
+	margin: auto;
+    margin-top: 0px;
+    margin-right: -25px;
+    padding: 35px;
+    background-size: 100%;
+	color: #0f0f0f;
+	
+	
 }
 
 .menu {
@@ -246,10 +258,9 @@ ul li a:hover {
 .form {
 	width: 250px;
 	
-	background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 50%,
-		rgba(0, 0, 0, 0.8) 50%);
+	
 	position: absolute;
-	top: 160px;
+	top: 150px;
 	right : 980px;
 	transform: translate(0%, -5%);
 	border-radius: 10px;
@@ -280,7 +291,7 @@ ul li a:hover {
 	color: #fff;
 	font-size: 15px;
 	letter-spacing: 1px;
-	margin-top: 30px;
+	margin-top: 10px;
 	font-family: sans-serif;
 }
 
@@ -352,5 +363,53 @@ ul li a:hover {
 .icons ion-icon:hover {
 	color: #ff7200;
 }
+
+  /* Dropdown Button */
+.dropbtn {
+ margin-top: 5.5px;
+ background-color: #040404;
+ margin-left: 950px;
+ color: white;
+ padding: 25px;
+ font-size: 25px;
+ border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+ position: relative;
+ display: inline-block;
+
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+ display: none;
+ position: absolute;
+ background-color: #f1f1f1;
+ min-width: 160px;
+ margin-left: 950px;
+ margin-top: -100x;
+ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ z-index: 1;
+ opacity: .8px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+ color: black;
+ padding: 15px;
+ text-decoration: none;
+ display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ff7200;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #ff7200 ;}
 </style>
 </html>

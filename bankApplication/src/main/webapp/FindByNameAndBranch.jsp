@@ -56,17 +56,23 @@
 			<li class="nav-item"><a class="nav-link disabled" href="#"
 				style="color: Red">Disabled</a></li>
 		</ul>
-<form class="form-inline my-2 my-lg-0" action="byname" method="get">
-<input class="form-control mr-sm-2"  type="text" placeholder="SearchByName" aria-label="Search" name="name">
-<input type="submit" class="btn btn-primary"  value="search" style="color: orange;"/>
-</form>
+
+
+
 </nav>
 <body>
+<form class="form-inline my-2 my-lg-0" action="byNameAndBranch" method="post">
+
 	<span style="color: red">${msg }</span>
 	<span style="color: red">${delete }${id }</span>
 	<span style="color: red">${notDeleted }</span>
 	<br>
 	<br>
+	
+	<input class="form-control mr-sm-2"  type="text" placeholder="SearchByName" aria-label="Search" name="name">
+	<input  class="form-control mr-sm-2" type="text" placeholder="Enter branch" aria-label="Search" name="branch">
+<input type="submit" class="btn btn-primary"  value="search" style="color: orange;"/>
+ 
 	<table style="padding: 25;" class="table table-dark">
 		<col>
 		<tr class="set">
@@ -86,7 +92,41 @@
 			
 		</tr>
 		
-		<c:forEach items="${dtos}" var="d">
+		<c:forEach items="${dtoname}" var="d">
+			<tr>
+				<td style="color: blueviolet;">${d.id}</td>
+				<td style="color: blueviolet;">${d.name}</td>
+				<td style="color: blueviolet;">${d.ifscCode}</td>
+				<td style="color: blueviolet;">${d.branch}</td>
+				<td style="color: blueviolet;">${d.address}</td>
+				<td style="color: blueviolet;">${d.phoneNum}</td>
+				<td style="color: blueviolet;">${d.email}</td>
+				<td style="color: blueviolet;">${d.aadharNum}</td>
+				<td style="color: blueviolet;">${d.password}</td>
+				<td style="color: blueviolet;">${d.reenterpas}</td>
+				<td><a href="update?id=${d.id}">Update</a></td>
+	            <td><a href="delete?id=${d.id }" class="btn btn-danger">Delete</a></td>
+			</tr>
+		</c:forEach>
+		
+		<c:forEach items="${dto}" var="d">
+			<tr>
+				<td style="color: blueviolet;">${d.id}</td>
+				<td style="color: blueviolet;">${d.name}</td>
+				<td style="color: blueviolet;">${d.ifscCode}</td>
+				<td style="color: blueviolet;">${d.branch}</td>
+				<td style="color: blueviolet;">${d.address}</td>
+				<td style="color: blueviolet;">${d.phoneNum}</td>
+				<td style="color: blueviolet;">${d.email}</td>
+				<td style="color: blueviolet;">${d.aadharNum}</td>
+				<td style="color: blueviolet;">${d.password}</td>
+				<td style="color: blueviolet;">${d.reenterpas}</td>
+				<td><a href="update?id=${d.id}">Update</a></td>
+	            <td><a href="delete?id=${d.id }" class="btn btn-danger">Delete</a></td>
+			</tr>
+		</c:forEach>
+		
+		<c:forEach items="${dtoLocation}" var="d">
 			<tr>
 				<td style="color: blueviolet;">${d.id}</td>
 				<td style="color: blueviolet;">${d.name}</td>
@@ -103,6 +143,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</form>
 </body>
 <style>
 body {
