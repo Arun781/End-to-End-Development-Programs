@@ -16,14 +16,14 @@
 <c:forEach var="s" items="${success }">
 <span style="color: green">${s}</span>
 </c:forEach>
-<form action="getMe" method="post">
+<form action="reset" method="post">
 	<div class="row">
 		<h1>Reset Password</h1>
 		<h6 class="information-text"></h6>
 		<div class="form-group">
-			<input type="text" name="Enter New Password" id="Enter New Password" required>
+			<input type="password" name="Enter New Password" id="Enter New Password" required>
 			<p><label for="Enter New Password">Enter New Password</label></p>
-            <input type="text" name="ReenterPassword" id="Re-EnterPassword" required>
+            <input type="password" name="ReenterPassword" id="Re-EnterPassword" required>
 			<p><label for="EnterPassword">Re-Enter New Password</label></p>
 			<button onclick="showSpinner()">Reset Password</button>
 		</div>

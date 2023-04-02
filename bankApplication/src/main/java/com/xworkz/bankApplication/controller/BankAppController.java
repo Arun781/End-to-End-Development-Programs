@@ -21,6 +21,8 @@ import com.xworkz.bankApplication.services.BankAppService;
 public class BankAppController {
 	@Autowired
 	private BankAppService appService;
+	
+	private int otp;
 
 	public BankAppController() {
 		System.out.println("Created " + this.getClass().getSimpleName());
@@ -197,10 +199,23 @@ public class BankAppController {
 	}
 
 	@PostMapping("getMe")
-	public String resetPassword(String email, Model model) throws AddressException, MessagingException {
-		int Otp = this.appService.otpGenerator();
-		String msg = this.appService.sendEmail(email, Otp);
-		model.addAttribute("success", msg);
-		return "Forgot";
+	public String resetPassword(@RequestParam String email, Model model) throws AddressException, MessagingException {
+		 this.otp = this.appService.otpGenerator();
+
+		String msg = this.appService.sendEmail(email, this.otp);
+		return "OTP";
+		
+		
+	}
+
+	@PostMapping("otp")
+	public String reset(@RequestParam int otp,Model model) {
+		System.out.println("Runing reset");
+		if(this.otp==otp) {
+			return "ResetPassWord";
+		}else {
+			model.addAttribute("otpMsg", "OTP is invalid");
+		return "OTP";
+		}
 	}
 }

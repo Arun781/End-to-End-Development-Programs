@@ -286,75 +286,37 @@ public class BankAppServiceImpl implements BankAppService {
 
 	@Override
 	public String sendEmail(String email, int otp) throws AddressException, MessagingException {
+
+		String host = "smtp.office365.com";
+		final String user = "arunbv9999@outlook.com";
+		final String password1 = "arun0703@AS";
+		String to = email;
 		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.stmp.user", "username");
-		// To use TLS
-		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.port", "587");
 		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.password", "password");
-		// To use SSL
-		props.put("mail.smtp.socketFactory.port", "465");
-		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.port", "465");
-		Session session = Session.getDefaultInstance(props, null);
-		String to = "email";
-		String from = "arunbv9999@gmail.com";
-		String subject = "Testing...";
-		Message msg = new MimeMessage(session);
+		props.put("mail.debug", "true");
+		props.put("mail.transport.protocol", "smtp");
+		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(user, password1);
+			}
+		});
 		try {
-			msg.setFrom(new InternetAddress(from));
-			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			msg.setSubject(subject);
-			msg.setText("Working fine..!");
-			Transport transport = session.getTransport("smtp");
-			transport.connect("smtp.gmail.com", 465, "username", "randomPin");
-			transport.send(msg);
-			System.out.println("fine!!");
-		} catch (Exception exc) {
-			System.out.println(exc);
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(user));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			message.setSubject("OTP sent successfully");
+			message.setText("The OTP is " + otp);
+			// send the message
+			Transport.send(message);
+
+			System.out.println("email with otp sent ......");
+		} catch (MessagingException e) {
+			e.printStackTrace();
 		}
-		return "message sent successfully....";
+
+		return "otp sent successfully";
 	}
 }
-//		String host = "smtp.gmail.com";
-//		final String user = "arunbv9999@gmail.com";
-//		final String password1 = "arun0703@AS";
-//		String to = email;
-//		Properties props = new Properties();
-//		props.put("mail.smtp.host", host);
-//		props.put("mail.smtp.port", "465");
-//		props.put("mail.smtp.starttls.enable", "true");
-//		props.put("mail.smtp.auth", "true");
-//		props.put("mail.debug", "true");
-//		props.put("mail.transport.protocol", "smtp");
-//		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-//			protected PasswordAuthentication getPasswordAuthentication() {
-//				return new PasswordAuthentication(user, password1);
-//			}
-//		});
-//		System.out.println("Running the sendEmail......");
-//		String host = "smtp.gmail.com";
-//		String from = "arunbv9999@gmail.com";
-//		String to = email;
-//		Properties properties = System.getProperties();
-//		properties.put("mail.smtp.host", host);
-//		properties.put("mail.smtp.port", "465");
-//		properties.put("mail.smtp.starttls.enable", "true");
-//		properties.put("mail.smtp.auth", "true");
-//		properties.put("mail.debug", "true");
-//		properties.put("mail.transport.protocol", "smtp");
-//		properties.setProperty("smtp.gmail.com", host);
-//		Session session = Session.getDefaultInstance(properties);
-//		MimeMessage message = new MimeMessage(session);
-//		message.setFrom(new InternetAddress(from));
-//		message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-//		message.setSubject("OTP to reset password");
-//		message.setText("Hello, the otp to reset password is : " + otp);
-//		System.out.println("otp in email :" + otp);
-//		Transport.send(message);
-//		System.out.println("message sent successfully....");
-//		return "message sent successfully....";
-//	}
-//}
