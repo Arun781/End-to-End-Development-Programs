@@ -17,11 +17,8 @@ public interface BankAppRepository {
 	default List<BankAppEntity> findByBranch(String branch) {
 		return Collections.emptyList();
 	}
-
 	boolean update(BankAppEntity updateEntity);
-
 	boolean delete(int id);
-	
 	default BankAppEntity findByEmail(String email) {
 		return null;
 	}

@@ -1,4 +1,8 @@
 <!DOCTYPE head PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -9,11 +13,15 @@
 	<title>Forgot Password Page - HTML + CSS</title>
 </head>
 <body>
+<c:forEach var="s" items="${success }">
+<span style="color: green">${s}</span>
+</c:forEach>
+<form action="getMe" method="post">
 	<div class="row">
 		<h1>Forgot Password</h1>
 		<h6 class="information-text">Enter your registered email to reset your password.</h6>
 		<div class="form-group">
-			<input type="email" name="user_email" id="user_email" required>
+			<input type="email" name="email" id="user_email" required>
 			<p><label for="username">Email</label></p>
 			<button onclick="showSpinner()">Reset Password</button>
 		</div>
@@ -22,6 +30,7 @@
 			<h5>Already have an account? <a href="index.jsp">Sign In.</a></h5>
 		</div>
 	</div>
+	</form>
 </body>
 <style>
     * {

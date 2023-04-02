@@ -46,12 +46,12 @@
 				style="color: Red" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Dropdown </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a href="SearchById.jsp">SearchById</a>
-                      <a href="SearchByName.jsp">SearchByName</a>
-                      <a href="UpdateBank.jsp">UpdateBank</a>
-                      <a href="SearchByBranch.jsp">SearchByBranch</a>
-                      <a href= "FindByNameAndBranch.jsp">FindByNameAndBranch</a>
-                       <a href= "findAll">FindAll</a>
+					<a href="SearchById.jsp">Search By Id</a><br>
+                      <a href= "CustomerReg.jsp">Customer Reg</a><br>
+                      <a href="UpdateBank.jsp">Update Bank</a><br>
+                      <a href="SearchByBranch.jsp">Search By Branch</a><br>
+                      <a href= "FindByNameAndBranch.jsp">FindByNameAndBranch</a><br>
+                       <a href= "findAll">Find All</a>
 				</div></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#"
 				style="color: Red">Disabled</a></li>

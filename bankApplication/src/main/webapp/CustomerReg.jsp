@@ -16,9 +16,9 @@
 					<h2 class="logo">Apna_Bank</h2>
 				</div>
 
-                <div class="dropdown">
+                <div class="dropdowns">
                     <button class="dropbtn">Dropdown</button>
-                    <div class="dropdown-content">
+                    <div class="dropdowns-content">
                       <a href="SearchById.jsp">SearchById</a>
                       <a href="SearchByName.jsp">SearchByName</a>
                       <a href="UpdateBank.jsp">UpdateBank</a>
@@ -38,19 +38,9 @@
 					</a> -->
 				</div>
 			</div>
-			<div class="content">
-				<h1>
-					<b>Apna Account</b> <br> <b></b><span>Registration</span> <br>Form</b>
-				</h1>
-				<br> <br> <br>
-				<button class="cn">
-					<a href="index.jsp">Home_Page</a>
-				</button>
-            </div>
-				<div class="form">
-					<h2>Basic Details</h2>
-					
-					
+			
+		  <div class="form">
+		  <h2>Basic Details</h2>		
           <div>
           	<span style="color: green">${success }</span><br>
           	<span style="color: red">${pass }</span>
@@ -68,10 +58,8 @@
 					<input type="text" name="password" placeholder="Enter Password" >
                     <input type="text" name="reenterpas" placeholder="Re Enter Password" >
 					<button class="btnn" href="index.jsp">Sign-Up</button>
-					<!-- <p class="link">
-						Go to<br> <a href="index.jsp">Log-in </a>
-						here</a>
-					</p> -->
+					 <p class="link">Already have an account<br>
+                    <a href="index.jsp">Log-in </a> here</a></p>
 
 				</div>
 			</div>
@@ -79,7 +67,15 @@
 		</div>
 		</div>
 	</form>
-  
+  <!-- <div class="content">
+				<h1>
+					<b>Apna Account</b> <br> <b></b><span>Registration</span> <br>Form</b>
+				</h1>
+				<br> <br> <br>
+				<button class="cn">
+					<a href="index.jsp">Home_Page</a>
+				</button>
+            </div> -->
 </body>
 <style>
 
@@ -96,10 +92,10 @@ body {
 	height: 100vh;
 }
 
-.navbar {
+/* .navbar {
     display: flexbox;
-	
-}
+	margin-top: 0px;
+} */
 
 .icon {
 	width: 200px;
@@ -110,15 +106,13 @@ body {
 .logo {
     display: flexbox;
     background-color: #ff7200;
-    width: 1500px;
+    width: 1800px;
 	margin: auto;
     margin-top: 0px;
     margin-right: -25px;
     padding: 35px;
     background-size: 100%;
-	color: #0f0f0f;
-	
-	
+	color: #0f0f0f;	
 }
 
 .menu {
@@ -206,24 +200,26 @@ ul li a:hover {
 	height: auto;
 	margin: auto;
 	color: #fff;
-	position: relative;
-    margin-left: 900px;
+	position: fixed;
+    margin-left: 650px;
 }
 
 .content .par {
+	
 	padding-left: 20px;
-	padding-bottom: 25px;
+	padding-bottom: 15px;
 	font-family: Arial;
 	letter-spacing: 1.2px;
-	line-height: 30px;
+	line-height: 20px;
    
 }
 
 .content h1 {
+
 	font-family: 'Times New Roman';
 	font-size: 50px;
-	padding-left: 20px;
-	margin-top: 9%;
+	padding-right: 20px;
+	margin-top: 150px;
 	letter-spacing: 2px;
 }
 
@@ -232,7 +228,7 @@ ul li a:hover {
 	height: 40px;
 	background: #ff7200;
 	border: none;
-	margin-bottom: 10px;
+	margin-top: -55px;
 	margin-left: 20px;
 	font-size: 18px;
 	border-radius: 10px;
@@ -257,11 +253,9 @@ ul li a:hover {
 
 .form {
 	width: 250px;
-	
-	
 	position: absolute;
-	top: 150px;
-	right : 980px;
+	top: 130px;
+	left : 50px;
 	transform: translate(0%, -5%);
 	border-radius: 10px;
 	padding: 25px;
@@ -282,7 +276,7 @@ ul li a:hover {
 
 .form input {
 	width: 240px;
-	height: 35px;
+	height: 30px;
 	background: transparent;
 	border-bottom: 1px solid #ff7200;
 	border-top: none;
@@ -291,7 +285,7 @@ ul li a:hover {
 	color: #fff;
 	font-size: 15px;
 	letter-spacing: 1px;
-	margin-top: 10px;
+	margin-top: 5px;
 	font-family: sans-serif;
 }
 
@@ -331,13 +325,16 @@ ul li a:hover {
 .form .link {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 17px;
-	padding-top: 20px;
-    margin-left: 25%;
+	padding-top: 10px;
+	text-align:center;
+	left:25px;
+    margin:auto;
     color: #ffffff;
 }
 
 .form .link a {
 	text-decoration: none;
+	
 	color: #ff7200;
 }
 
@@ -363,53 +360,53 @@ ul li a:hover {
 .icons ion-icon:hover {
 	color: #ff7200;
 }
-
+/* The container <div> - needed to position the dropdown content */
+.dropdowns {
+ position: relative;
+ display: inline-block;
+} 
   /* Dropdown Button */
 .dropbtn {
- margin-top: 5.5px;
+ margin-top: 10.5px; 
+ position:relative;
  background-color: #040404;
  margin-left: 950px;
  color: white;
  padding: 25px;
  font-size: 25px;
  border: none;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
- position: relative;
- display: inline-block;
-
+ 
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+.dropdowns-content {
  display: none;
- position: absolute;
+ position: relative;
  background-color: #f1f1f1;
- min-width: 160px;
+ min-width: 60px;
  margin-left: 950px;
- margin-top: -100x;
- box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
- z-index: 1;
- opacity: .8px;
+ margin-top: 5px;
+
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdowns-content a {
  color: black;
- padding: 15px;
+ padding: 5px;
  text-decoration: none;
  display: block;
+ color: purple;
+ opacity: .5px;
+
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ff7200;}
+.dropdowns-content a:hover {background-color: #ff7200;}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+.dropdowns:hover .dropdowns-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #ff7200 ;}
+.dropdowns:hover .dropbtn {background-color: #ff7200 ;}
 </style>
 </html>

@@ -2,6 +2,9 @@ package com.xworkz.bankApplication.controller;
 
 import java.util.List;
 import java.util.Set;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.validation.ConstraintViolation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.xworkz.bankApplication.dto.BankAppDTO;
-import com.xworkz.bankApplication.entity.BankAppEntity;
 import com.xworkz.bankApplication.services.BankAppService;
 
 @Controller
@@ -34,7 +36,7 @@ public class BankAppController {
 	public String onBank(Model model, BankAppDTO appDTO, @RequestParam String password, @RequestParam String reenterpas,
 			@RequestParam String email) {
 		System.out.println("Running the onBank in Controller...");
-		// BankAppDTO dto = this.appService.findByEmail(email);
+// 		BankAppDTO dto = this.appService.findByEmail(email);
 //		if (email.equals(dto.getEmail())) {
 //			model.addAttribute("same", "Email already exist");
 //			return "CustomerReg";
@@ -83,6 +85,7 @@ public class BankAppController {
 		}
 		return "SearchByName";
 	}
+
 	@GetMapping("/byBranch")
 	public String onFindByBranch(Model model, @RequestParam String branch) {
 		System.out.println("Running the onFindByBranch in controller...");
@@ -129,7 +132,7 @@ public class BankAppController {
 		} else {
 			model.addAttribute("notDeleted", "Id not found");
 		}
-		return "SearchByName";
+		return "FindAll";
 	}
 
 	@GetMapping("/login")
@@ -157,8 +160,6 @@ public class BankAppController {
 			return "FindAll";
 		}
 	}
-		
-	
 
 	@PostMapping("byNameAndBranch")
 	public String findByNameAndBranch(@RequestParam String name, @RequestParam String branch, Model model) {
@@ -184,7 +185,7 @@ public class BankAppController {
 
 		} else {
 
-			List<BankAppDTO> dto = this.appService.findByNameAndBranch(name,branch);
+			List<BankAppDTO> dto = this.appService.findByNameAndBranch(name, branch);
 			if (dto != null) {
 				model.addAttribute("dto", dto);
 				return "FindByNameAndBranch";
@@ -195,4 +196,11 @@ public class BankAppController {
 		}
 	}
 
+	@PostMapping("getMe")
+	public String resetPassword(String email, Model model) throws AddressException, MessagingException {
+		int Otp = this.appService.otpGenerator();
+		String msg = this.appService.sendEmail(email, Otp);
+		model.addAttribute("success", msg);
+		return "Forgot";
+	}
 }

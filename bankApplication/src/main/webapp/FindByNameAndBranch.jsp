@@ -50,18 +50,20 @@
                       <a href="SearchByName.jsp">SearchByName</a>
                       <a href="UpdateBank.jsp">UpdateBank</a>
                       <a href="SearchByBranch.jsp">SearchByBranch</a>
-                      <a href= "FindByNameAndBranch.jsp">FindByNameAndBranch</a>
+                       <a href= "CustomerReg.jsp">Customer Reg</a>
                        <a href= "findAll">FindAll</a>
 				</div></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#"
 				style="color: Red">Disabled</a></li>
 		</ul>
 
-
-
+<form class="form-inline my-2 my-lg-0" action="byNameAndBranch" method="post">
+<input class="form-control mr-sm-2"  type="text" placeholder="SearchByName" aria-label="Search" name="name">
+<input  class="form-control mr-sm-2" type="text" placeholder="Enter branch" aria-label="Search" name="branch">
+<input type="submit" class="btn btn-primary"  value="search" style="color: orange;"/>
 </nav>
 <body>
-<form class="form-inline my-2 my-lg-0" action="byNameAndBranch" method="post">
+
 
 	<span style="color: red">${msg }</span>
 	<span style="color: red">${delete }${id }</span>
@@ -69,9 +71,7 @@
 	<br>
 	<br>
 	
-	<input class="form-control mr-sm-2"  type="text" placeholder="SearchByName" aria-label="Search" name="name">
-	<input  class="form-control mr-sm-2" type="text" placeholder="Enter branch" aria-label="Search" name="branch">
-<input type="submit" class="btn btn-primary"  value="search" style="color: orange;"/>
+	
  
 	<table style="padding: 25;" class="table table-dark">
 		<col>

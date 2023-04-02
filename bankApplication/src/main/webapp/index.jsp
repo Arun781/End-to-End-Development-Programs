@@ -10,7 +10,7 @@
 <form action="login" method="get">
   <div class="nav">
     <div class="image">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK__L7wxH4f58z-o5ItAc4EEOcy9FAkGCDnQ&usqp=CAU" width="250px" height="100px" >
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK__L7wxH4f58z-o5ItAc4EEOcy9FAkGCDnQ&usqp=CAU" width="150px" height="100px" >
     </div>
     <div id="header" class="head">
             <h1>Online Banking Website</h1>
@@ -72,9 +72,10 @@ h1{
     word-spacing: 1.5px;
     letter-spacing: 5px;
     padding-top:20px;
-    margin-left: -155px;
+    margin-left: -485px;
     font-size:50px;
     text-shadow: 5px 5px 5px grey;
+    padding: 25px;
 }
 .head{
     position: fixed;
@@ -83,7 +84,7 @@ h1{
 }
 #header img{
     height:75px;
-    width:300px;
+    width:150px;
     border-radius:20px;
     position:absolute;
     top:10px;

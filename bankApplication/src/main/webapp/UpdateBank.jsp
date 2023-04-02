@@ -235,16 +235,16 @@ ul li a:hover{
     left: 870px;
     transform: translate(0%,-5%);
     border-radius: 10px;
-    padding: 25px;
+    padding: 15px;
 }
 
 .form h2{
     width: 220px;
     font-family: sans-serif;
     text-align: center;
-    color: #ff7200;
+    color: #fff;
     font-size: 22px;
-    background-color: #fff;
+    background-color: #ff7200;
     border-radius: 10px;
     margin: 2px;
     padding: 8px;
@@ -261,7 +261,7 @@ ul li a:hover{
     color: #fff;
     font-size: 15px;
     letter-spacing: 1px;
-    margin-top: 10px;
+    margin-top: 4px;
     font-family: sans-serif;
 }
 
@@ -279,7 +279,7 @@ ul li a:hover{
     height: 40px;
     background: #ff7200;
     border: none;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 18px;
     border-radius: 10px;
     cursor: pointer;
@@ -306,7 +306,7 @@ ul li a:hover{
     color: #ff7200;
 }
 .liw{
-    padding-top: 15px;
+    padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
 }
