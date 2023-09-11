@@ -10,13 +10,14 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan("com.xworkz.bankApplication")
 public class BankAppConfiguration {
+	
 	public BankAppConfiguration() {
 		System.out.println("Created " + this.getClass().getSimpleName());
 	}
 
 	@Bean
 	public ViewResolver resolver() {
-		System.out.println("Running the ViewResolver..");
+		System.out.println("Running the ViewResolver in ..");
 		return new InternalResourceViewResolver("/", ".jsp");
 	}
 

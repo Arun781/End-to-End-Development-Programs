@@ -14,20 +14,28 @@ public interface BankAppRepository {
 	default List<BankAppEntity> findByName(String name) {
 		return Collections.emptyList();
 	}
+
 	default List<BankAppEntity> findByBranch(String branch) {
 		return Collections.emptyList();
 	}
+
 	boolean update(BankAppEntity updateEntity);
+
 	boolean delete(int id);
+
 	default BankAppEntity findByEmail(String email) {
 		return null;
 	}
+
 	default List<BankAppEntity> findAll() {
 		return null;
 	}
 
-	default List<BankAppEntity> findByNameAndBranch(String name,String branch) {
+	default List<BankAppEntity> findByNameAndBranch(String name, String branch) {
 		return null;
 	}
 
+	default boolean validateAndSavePass(String password, String reenterpas) {
+		return true;
+	}
 }

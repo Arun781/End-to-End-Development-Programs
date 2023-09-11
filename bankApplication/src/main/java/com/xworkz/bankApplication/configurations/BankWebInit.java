@@ -5,7 +5,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class BankWebInit extends AbstractAnnotationConfigDispatcherServletInitializer implements WebMvcConfigurer {
-	
+
 	public BankWebInit() {
 		System.out.println("Created " + this.getClass().getSimpleName());
 	}

@@ -17,6 +17,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 import javax.validation.Validator;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +52,7 @@ public class BankAppServiceImpl implements BankAppService {
 		appEntity.setPassword(serviceDTO.getPassword());
 		appEntity.setReenterpas(serviceDTO.getReenterpas());
 		boolean saved = this.bankAppRepository.save(appEntity);
+		System.out.println("Entity is saved" + saved);
 		if (saved) {
 			Boolean sendMail = this.sendMail(serviceDTO.getEmail(), serviceDTO);
 			System.out.println(sendMail);
@@ -130,7 +132,6 @@ public class BankAppServiceImpl implements BankAppService {
 				appDTO.setPassword(appEntity.getPassword());
 				appDTO.setReenterpas(appEntity.getReenterpas());
 				list.add(appDTO);
-
 			}
 			System.out.println("Size of dtos" + list.size());
 			System.out.println("Size of entities" + appEntities.size());
@@ -243,9 +244,9 @@ public class BankAppServiceImpl implements BankAppService {
 	@Override
 	public Boolean sendMail(String email, BankAppDTO appDTO) {
 		String host = "smtp.office365.com";
-		final String user = "arunbv9999@outlook.com";
-		final String password1 = "arun0703@AS";
-		String to = email;
+		final String fromEmail = "arunbv9999@outlook.com";
+		final String password = "arun1996@AR";
+		String toEmail = email;
 		Properties props = new Properties();
 		props.put("mail.smtp.host", host);
 		props.put("mail.smtp.port", "587");
@@ -253,27 +254,29 @@ public class BankAppServiceImpl implements BankAppService {
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.debug", "true");
 		props.put("mail.transport.protocol", "smtp");
-		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(user, password1);
-			}
-		});
-		try {
-			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(user));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			message.setSubject("Registration Confirmation  Mail");
-			message.setText("Hi" + " " + appDTO.getName() + " Registration is complite " + " " + "your password is"
-					+ appDTO.getPassword() + " " + "Thank You");
-			// send the message
-			Transport.send(message);
-
-			System.out.println("send mail ......");
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
-
-		return true;
+		     
+		   Session session = Session.getDefaultInstance(props,  
+		    new javax.mail.Authenticator() {  
+		      protected PasswordAuthentication getPasswordAuthentication() {  
+		    return new PasswordAuthentication(fromEmail,password);  
+		      }  
+		    });  
+		  
+		   //Compose the message  
+		    try {  
+		     MimeMessage message = new MimeMessage(session);  
+		     message.setFrom(new InternetAddress(fromEmail));  
+		     message.addRecipient(Message.RecipientType.TO,new InternetAddress(toEmail));  
+		     message.setSubject("javatpoint");  
+		     message.setText("This is simple program of sending email using JavaMail API");  
+		       
+		    //send the message  
+		     Transport.send(message);  
+		  
+		     System.out.println("message sent successfully...");  
+		   
+		     } catch (MessagingException e) {e.printStackTrace();}
+			return true;  
 	}
 
 	@Override
@@ -286,10 +289,9 @@ public class BankAppServiceImpl implements BankAppService {
 
 	@Override
 	public String sendEmail(String email, int otp) throws AddressException, MessagingException {
-
 		String host = "smtp.office365.com";
 		final String user = "arunbv9999@outlook.com";
-		final String password1 = "arun0703@AS";
+		final String password1 = "arun1996@AR";
 		String to = email;
 		Properties props = new Properties();
 		props.put("mail.smtp.host", host);
@@ -299,8 +301,8 @@ public class BankAppServiceImpl implements BankAppService {
 		props.put("mail.debug", "true");
 		props.put("mail.transport.protocol", "smtp");
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(user, password1);
+		protected PasswordAuthentication getPasswordAuthentication() {
+		return new PasswordAuthentication(user, password1);
 			}
 		});
 		try {
@@ -311,12 +313,23 @@ public class BankAppServiceImpl implements BankAppService {
 			message.setText("The OTP is " + otp);
 			// send the message
 			Transport.send(message);
-
 			System.out.println("email with otp sent ......");
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
-
 		return "otp sent successfully";
 	}
+
+	@Override
+	public List<BankAppDTO> validateAndSavePass(String password, String reenterpas) {
+		System.out.println("Running the validateAndSavePass in services");
+		if (password.equals(reenterpas)) {
+			System.out.println("The password is matched you can save to repo..");
+		}else {
+			System.err.println("Please check the entered password..");
+		}
+		boolean saved = this.bankAppRepository.validateAndSavePass(password, reenterpas);
+		System.out.println("The forgot password is verified and saved in repo"+saved);
+        return null ;
+	}	
 }

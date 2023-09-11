@@ -1,7 +1,6 @@
 package com.xworkz.bankApplication.repository;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,7 +13,7 @@ import com.xworkz.bankApplication.entity.BankAppEntity;
 public class BankAppRepositoryImpl implements BankAppRepository {
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
-
+	
 	public BankAppRepositoryImpl() {
 		System.out.println("Created " + this.getClass().getSimpleName());
 	}
@@ -135,6 +134,18 @@ public class BankAppRepositoryImpl implements BankAppRepository {
 		}finally {
 			manager.close();
 		}
+	}
+	
+	@Override
+	public boolean validateAndSavePass(String password, String reenterpas) {
+		EntityManager manager = this.entityManagerFactory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		manager.merge(password);
+		manager.merge(reenterpas);
+		transaction.commit();
+		manager.close();
+		return true;
 	}
 
 }

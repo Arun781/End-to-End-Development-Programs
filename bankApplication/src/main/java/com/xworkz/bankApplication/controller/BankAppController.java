@@ -2,7 +2,6 @@ package com.xworkz.bankApplication.controller;
 
 import java.util.List;
 import java.util.Set;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.validation.ConstraintViolation;
@@ -204,8 +203,6 @@ public class BankAppController {
 
 		String msg = this.appService.sendEmail(email, this.otp);
 		return "OTP";
-		
-		
 	}
 
 	@PostMapping("otp")
@@ -217,5 +214,29 @@ public class BankAppController {
 			model.addAttribute("otpMsg", "OTP is invalid");
 		return "OTP";
 		}
+	}
+	@PostMapping("/reset")
+	public String onPass(Model model, BankAppDTO appDTO, @RequestParam String password, 
+			@RequestParam String reenterpas) {
+		System.out.println("Running the onPass in Controller...");
+		List<BankAppDTO> violation = this.appService.validateAndSavePass(password, reenterpas);
+		if (violation.isEmpty()) {
+			System.out.printf("No violation, goto success page" + password, reenterpas);
+			if (password.equals(reenterpas)) {
+				model.addAttribute("dto", password);
+				model.addAttribute("dto",reenterpas);
+				model.addAttribute("success", "Reset Successfully");
+				return "index";
+			} else {
+				model.addAttribute("dto", password);
+				model.addAttribute("dto",reenterpas);
+				model.addAttribute("pass", "Re-entered password not match");
+				return "ResetPassWord";
+			}
+		}
+		violation.forEach(cv -> System.out.println(((ConstraintViolation<BankAppDTO>) cv).getMessage()));
+		model.addAttribute("error", violation);
+		model.addAttribute("dto", appDTO);
+		return "ResetPassWord";
 	}
 }

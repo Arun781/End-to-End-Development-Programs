@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
 import lombok.Data;
 
 
@@ -13,13 +12,10 @@ import lombok.Data;
 @Entity
 @Table(name="bank_details")
 @NamedQuery(name = "findByName", query = "Select na from BankAppEntity na where na.name=:bankName")
-
 @NamedQuery(name = "findByBranch", query = "Select ba from BankAppEntity ba where ba.branch=:branch")
 @NamedQuery(name = "findByEmail" ,query = "Select em from BankAppEntity em where em.email=:mail")
-
 @NamedQuery(name = "findAll", query = "from BankAppEntity")
-@NamedQuery(name = "findByNameAndBranch", 
-query = "select app from BankAppEntity app where app.name=:name and app.branch=:branch")
+@NamedQuery(name = "findByNameAndBranch", query = "select app from BankAppEntity app where app.name=:name and app.branch=:branch")
 public class BankAppEntity {
 	@Id
 	@Column(name="b_id")
